@@ -1,9 +1,9 @@
 # ﻿W4-TM: Week 4 Team Meeting: September 27
 
 ## Agenda
-1 Introduction and coding experience
-2 Exploration of research ideas and metadata sets
-3 Selection of collaboration tool for lab notebook
+1. Introduction and coding experience
+2. Exploration of research ideas and metadata sets
+3. Selection of collaboration tool for lab notebook
 
 ## Meeting Minutes
 * Everyone has some level of coding knowledge from past coursework.
@@ -26,13 +26,13 @@
 # W4-TM: Week 5 Team Meeting: October 4
 
 ## Agenda
-1 Review previous meeting minutes
-2 Share research questions and finalize the topic (possible questions below)
+1. Review previous meeting minutes
+2. Share research questions and finalize the topic (possible questions below)
     * Does country of captivity have an effect on the gut microbiome of captive animals
     * Is body mass between wild and captive animals correlated with changes in gut microbiome
     * How is the gut microbiome of mammalian animals affected by their habitat type (terrestrial or arboreal) and captivity status (captive or wild) → compare bacterial diversity across the four combinations
-3 Ask for supplemental data from authors?
-4 Notebook formatting (paper copy? notebook code?)
+3. Ask for supplemental data from authors?
+4. Notebook formatting (paper copy? notebook code?)
 
 ## Meeting Minutes
 * Zoo metadata is referenced wrongly (e.g., body mass, age of birth)
