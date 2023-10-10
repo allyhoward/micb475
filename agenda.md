@@ -54,5 +54,5 @@
         * Can switch research direction after the proposal is done
 
 ## Action Items
-    * Share one credential so we can all work on the same QIIME server
-    * review soil metadata and propose a list of new research questions and email to Avril
+* Share one credential so we can all work on the same QIIME server
+* review soil metadata and propose a list of new research questions and email to Avril
