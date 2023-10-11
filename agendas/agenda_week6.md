@@ -13,4 +13,7 @@
 * Objectives for proposal
     * look at alpha a beta diversity (check if one soil type is more diverse than another)
     * differential abundance (looking for any stats difference between two values)
-    * indicator taxa (looking for one really abundant / prevalent group, smaller number of species)
+      * not doing this one for our proposal
+    * indicator taxa (looking for one really abundant / prevalent group, smaller number of species
+      * used more in ecology
+      * use this one for objective 2 of our proposal
