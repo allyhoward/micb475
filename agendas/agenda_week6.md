@@ -8,3 +8,9 @@
 4. Decide tasks for proposal
 
 ## Meeting minutes
+* Confirmed finalized project question (double check UJEMI papers to see if duplicates)
+    * checked if moisture content was a continuous variable (1-100, percentage)
+* Objectives for proposal
+    * look at alpha a beta diversity (check if one soil type is more diverse than another)
+    * differential abundance (looking for any stats difference between two values)
+    * indicator taxa (looking for one really abundant / prevalent group, smaller number of species)
