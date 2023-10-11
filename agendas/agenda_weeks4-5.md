@@ -23,7 +23,7 @@
 * Create GitHub account
 
 
-# W4-TM: Week 5 Team Meeting: October 4
+# W5-TM: Week 5 Team Meeting: October 4
 
 ## Agenda
 1. Review previous meeting minutes
