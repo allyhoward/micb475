@@ -15,7 +15,8 @@
     * differential abundance (looking for any stats difference between two values)
       * not doing this one for our proposal
     * indicator taxa (looking for one really abundant / prevalent group, smaller number of species
+      * might miss out on some differences that would be seen with differential abundance
       * used more in ecology
-      * wouldn't typically use Picrust for this (but this might be a cool route to go down)
+      * wouldn't typically use Picrust (DSeq instead) for this (but this might be a cool route to go down)
       * use this one for objective 2 of our proposal
     * Picrust (gives Kegg data, pathway data, enzyme data all based on taxonomy data)
