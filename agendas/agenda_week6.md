@@ -20,3 +20,16 @@
       * wouldn't typically use Picrust (DSeq instead) for this (but this might be a cool route to go down)
       * use this one for objective 2 of our proposal
     * Picrust (gives Kegg data, pathway data, enzyme data all based on taxonomy data)
+* Proposal
+    * Approach chart (specify when using QIIME vs R) --> colour code with key
+      * be specific about what kind of diversity metrics you are evaluating
+      * be specific over all (mention indicator species package, stats)
+        * soil moisture --> continuous variable
+        * alpha diversity (boxplots)
+        * soil types --> use wilcoxin test (t-test)
+        * moisture --> spearman correlation (linear model, pearsons correlation coefficient)
+
+## Action Items
+* share QIIME credentials
+* decide tasks for proposal
+* start on proposal
