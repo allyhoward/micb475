@@ -31,6 +31,13 @@
         * beta diversity --> permanova (module 15)
         * indicator species and picrust automatically generate stats
     * write up picrust for indicator species (Avril will talk to Evelyn about this)
+    * background stuff doesn't talk about OUR project, just past work and gap
+    * research objective
+      * slightly more specific ("these variables are known to be related")
+    * experimental aims
+      * specific papers that are relevant to our project
+      * touches on how we'll do our project
+      * most narrow (aside from our approaches table)
 
 ## Action Items
 * share QIIME credentials
