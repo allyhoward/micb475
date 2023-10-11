@@ -24,10 +24,11 @@
     * Approach chart (specify when using QIIME vs R) --> colour code with key
       * be specific about what kind of diversity metrics you are evaluating
       * be specific over all (mention indicator species package, stats)
-        * soil moisture --> continuous variable
         * alpha diversity (boxplots)
-        * soil types --> use wilcoxin test (t-test)
-        * moisture --> spearman correlation (linear model, pearsons correlation coefficient)
+          * soil types --> use wilcoxin test (t-test)
+          * moisture --> spearman correlation (linear model, pearsons correlation coefficient)
+          * look over module 14 for this^^
+        * beta diversity --> permanova (module 15)
 
 ## Action Items
 * share QIIME credentials
