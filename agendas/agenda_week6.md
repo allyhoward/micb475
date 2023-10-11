@@ -29,7 +29,7 @@
           * moisture --> spearman correlation (linear model, pearsons correlation coefficient)
           * look over module 14 for this^^
         * beta diversity --> permanova (module 15)
-        * indicator species and picrust automatically generate stats
+        * indicator species and picrust automatically generate stats (write "use internal stats")
     * write up picrust for indicator species (Avril will talk to Evelyn about this)
     * background stuff doesn't talk about OUR project, just past work and gap
     * research objective
