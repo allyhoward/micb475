@@ -16,4 +16,6 @@
       * not doing this one for our proposal
     * indicator taxa (looking for one really abundant / prevalent group, smaller number of species
       * used more in ecology
+      * wouldn't typically use Picrust for this (but this might be a cool route to go down)
       * use this one for objective 2 of our proposal
+    * Picrust (gives Kegg data, pathway data, enzyme data all based on taxonomy data)
