@@ -40,6 +40,7 @@
       * most narrow (aside from our approaches table)
 
 ## Action Items
+* double check UJEMI papers
 * share QIIME credentials
 * decide tasks for proposal
 * start on proposal
