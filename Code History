@@ -1,0 +1,15 @@
+##Code History##
+
+#Date of action: 11/10/23#
+#within /data working directory, created project folder 
+mkdir soil_project
+
+#import soil manifest as demux_seq.qza to soil_project folder
+#step imports data while also demultiplexing 
+qiime tools import \
+  --type "SampleData[SequencesWithQuality]" \
+  --input-format SingleEndFastqManifestPhred33V2 \
+  --input-path /mnt/datasets/project_2/soil/soil_manifest.txt \
+  --output-path /data/soil_project/demux_seqs.qza
+
+  
