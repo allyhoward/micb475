@@ -1,6 +1,6 @@
-##Code History##
+# Code History
 
-#Date of action: 11/10/23#
+## Date of action: 11/10/23
 #within /data working directory, created project folder 
 mkdir soil_project
 
