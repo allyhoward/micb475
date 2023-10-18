@@ -21,10 +21,14 @@ and Sub-Boreal Spruce ecozones in British Columbia
 ## Meeting Minutes
 
     * Addressed change to research question
-      * UJEMI+ paper we found was very close to our inital research question
+      * UJEMI+ paper we found was very close to our inital research question - will now be used as background
       * pivoting to analyse microbiome of Douglas Fir in BC based on their pH and horizon type 
       * not elevation because only two elevations for different sites
       * not soil type becase all Douglas Fir have same 
+      * Focus on Horizon more than pH 
+        * Because there is a previous UJEMI paper which discusses pH (as well as other variables for all trees in the dataset) must explicitly state the novelty 
+        * Could simply control for pH 
+        * Because not all Doulgas Fir have pH (some are listed as 0) we could chose to subset and compare pH for the Douglas Fir which DO have pH values 
     * Shared proposal with Avril 
     * Final project requires all graphs and plots to be done in R 
       * Use QIIME2 for initial visualization
@@ -36,4 +40,8 @@ and Sub-Boreal Spruce ecozones in British Columbia
     * Spell check! 
     * .gitignore = file that will remain on your computer which cannot be pushed or pulled
     * Hidden files like .DS_score can be ignored, do not have to remove them from repository 
-    * 
+    
+    *Primary focus of project will be regarding Horizon types
+      *determine if we want to also control for pH
+    *Group meetings to finish up proposal
+      *provide Avril with updates up until early Saturday morning to get feedback prior to submission 
