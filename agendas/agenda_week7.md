@@ -1,4 +1,4 @@
-# W6 - TM: Week 7 Team Meeting: Oct 18
+# W7 - TM: Week 7 Team Meeting: Oct 18
 
 ## Agenda
 
@@ -20,3 +20,20 @@ and Sub-Boreal Spruce ecozones in British Columbia
 
 ## Meeting Minutes
 
+    * Addressed change to research question
+      * UJEMI+ paper we found was very close to our inital research question
+      * pivoting to analyse microbiome of Douglas Fir in BC based on their pH and horizon type 
+      * not elevation because only two elevations for different sites
+      * not soil type becase all Douglas Fir have same 
+    * Shared proposal with Avril 
+    * Final project requires all graphs and plots to be done in R 
+      * Use QIIME2 for initial visualization
+    * No longer need to include Feasibility and Training section in proposal 
+    * Aim to cover all rubric 
+      * Intro - talk about papers that take about the data, overview of what's been done, prior UJEMI papers, original authors, background on metadata talked about
+        * Give background regarding pH and horizon
+        * Do not draw any conclusions in intro
+    * Spell check! 
+    * .gitignore = file that will remain on your computer which cannot be pushed or pulled
+    * Hidden files like .DS_score can be ignored, do not have to remove them from repository 
+    * 
