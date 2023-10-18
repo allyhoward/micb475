@@ -3,8 +3,8 @@
 ## Agenda
 
 1. Fatima + Jastina's questions for Avril
-  a. When analyzing our data, do we run test looking at moisture then soil types and THEN both?
-  b. Look through how we ran our QIIME2 code
-  c. What types of alpha/beta diversity tests should we run?
+    a. When analyzing our data, do we run test looking at moisture then soil types and THEN both?
+    b. Look through how we ran our QIIME2 code
+    c. What types of alpha/beta diversity tests should we run?
   
 
