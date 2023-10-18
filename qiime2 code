@@ -1,0 +1,43 @@
+
+# Create a directory for the project and navigate to it
+mkdir /data/project_2
+cd /data/project_2
+
+# Import data while working directory is `/data/project_2` and demultiplex data
+qiime tools import \
+  --type "SampleData[SequencesWithQuality]" \
+  --input-format SingleEndFastqManifestPhred33V2 \
+  --input-path /mnt/datasets/project_2/soil/soil_manifest.txt \ ##########the manifest was a .txt not .tsv - is this ok?##########
+  --output-path demux_seqs.qza
+
+# Create visualization of demultiplexed samples
+qiime demux summarize \
+  --i-data /data/project_2/demux_seqs.qza \
+  --o-visualization demux.qzv
+
+# Copy file to GitHub repository
+scp root@10.19.139.169:/data/project_2/demux.qzv .
+
+# Determine ASVs with DADA2
+qiime dada2 denoise-single \
+  --i-demultiplexed-seqs demux_seqs.qza \
+  --p-trim-left 0 \
+  --p-trunc-len 120 \
+  --o-representative-sequences rep-seqs.qza \
+  --o-table table.qza \
+  --o-denoising-stats stats.qza
+  
+# Visualize DADA2 stats
+qiime metadata tabulate \
+  --m-input-file stats.qza \
+  --o-visualization stats.qzv
+
+# Visualize ASVs stats
+qiime feature-table summarize \
+  --i-table table.qza \
+  --o-visualization table.qzv \
+  --m-sample-metadata-file /mnt/datasets/project_2/soil/sample-metadata.tsv
+  
+qiime feature-table tabulate-seqs \
+  --i-data rep-seqs.qza \
+  --o-visualization rep-seqs.qzv
