@@ -36,7 +36,7 @@ qiime metadata tabulate \
 qiime feature-table summarize \
   --i-table table.qza \
   --o-visualization table.qzv \
-  --m-sample-metadata-file /mnt/datasets/project_2/soil/sample-metadata.tsv
+  --m-sample-metadata-file /mnt/datasets/project_2/soil/MICB_421_Soil_Metadata.tsv
   
 qiime feature-table tabulate-seqs \
   --i-data rep-seqs.qza \
