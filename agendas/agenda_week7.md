@@ -18,3 +18,5 @@ and Sub-Boreal Spruce ecozones in British Columbia
 5. feasibility / training
 6. gitignore?
 
+## Meeting Minutes
+
