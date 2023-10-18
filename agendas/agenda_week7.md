@@ -15,4 +15,5 @@ and Sub-Boreal Spruce ecozones in British Columbia
 
 3. Can we use the above paper as a reference
 4. ok new project idea: look at pH and A and O horizons instead
+5. feasibility / training
 
