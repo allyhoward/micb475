@@ -34,12 +34,27 @@ and Sub-Boreal Spruce ecozones in British Columbia
       * Use QIIME2 for initial visualization
    * No longer need to include Feasibility and Training section in proposal 
    * Aim to cover all rubric 
-      * Intro - talk about papers that take about the data, overview of what's been done, prior UJEMI papers, original authors, background on metadata talked about
+      * Intro -
+        * Talk about papers that take about the data
+        * Overview of what's been done (prior UJEMI papers, original authors, background on metadata talked about)
         * Give background regarding pH and horizon
         * Do not draw any conclusions in intro
+        * General info
+        * What is the learning gap? what is the purpose of our paper?
+        * remain focused on project topic, must have clear connections
+      * Experimental Aims -
+        * For each tool you use, why is that particular tool important?
+          * eg: why bother with functional differences when you have taxonomic info?
+          * Must address importance of what you are doing, what is the purpose
+      * Gantt chart -
+        * Update the example Gantt charts to be relevant to our project 
+        * Add in manuscript draft, final copy and presentation prep timelines as well 
    * Spell check! 
    * .gitignore = file that will remain on your computer which cannot be pushed or pulled
-   * Hidden files like .DS_score can be ignored, do not have to remove them from repository 
+   * Hidden files like .DS_score can be ignored, do not have to remove them from repository
+   * Primary filtering in QIIME but most work should be done in R (easier)
+   * Rarifaction should only be done on alpha and beta diversity
+   * Can cause issues if raw data is NOT used for all other analyses 
     
    * Primary focus of project will be regarding Horizon types
       * determine if we want to also control for pH
