@@ -61,4 +61,5 @@ and Sub-Boreal Spruce ecozones in British Columbia
    * Group meetings to finish up proposal
       * provide Avril with updates up until early Saturday morning to get feedback prior to submission
     
-   ## Action item: Finish proposal!
+   ## Action item: 
+   * Finish proposal!
