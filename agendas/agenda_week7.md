@@ -20,7 +20,7 @@ and Sub-Boreal Spruce ecozones in British Columbia
 
 ## Meeting Minutes
 
-    * Addressed change to research question
+   * Addressed change to research question
       * UJEMI+ paper we found was very close to our inital research question - will now be used as background
       * pivoting to analyse microbiome of Douglas Fir in BC based on their pH and horizon type 
       * not elevation because only two elevations for different sites
