@@ -59,4 +59,6 @@ and Sub-Boreal Spruce ecozones in British Columbia
    * Primary focus of project will be regarding Horizon types
       * determine if we want to also control for pH
    * Group meetings to finish up proposal
-      * provide Avril with updates up until early Saturday morning to get feedback prior to submission 
+      * provide Avril with updates up until early Saturday morning to get feedback prior to submission
+    
+   *Action item: Finish proposal!
