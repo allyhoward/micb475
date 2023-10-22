@@ -26,6 +26,7 @@ scp root@10.19.139.169:/data/project_2/demux.qzv .
 ### Denoise the data using DADA2 ###
 
 # Determine ASVs with DADA2
+# Truncate reads to 410 to preserve quality reads
 qiime dada2 denoise-single \
   --i-demultiplexed-seqs demux_seqs.qza \
   --p-trim-left 0 \
