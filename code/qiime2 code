@@ -18,6 +18,10 @@ qiime demux summarize \
 # Copy file to GitHub repository
 scp root@10.19.139.169:/data/project_2/demux.qzv .
 
+
+
+### Denoise the data using DADA2 ###
+
 # Determine ASVs with DADA2
 qiime dada2 denoise-single \
   --i-demultiplexed-seqs demux_seqs.qza \
@@ -32,12 +36,61 @@ qiime metadata tabulate \
   --m-input-file stats.qza \
   --o-visualization stats.qzv
 
+# Copy file to GitHub repository to view
+scp root@10.19.139.169:/data/project_2/stats.qzv .
+
 # Visualize ASVs stats
 qiime feature-table summarize \
   --i-table table.qza \
   --o-visualization table.qzv \
   --m-sample-metadata-file /mnt/datasets/project_2/soil/MICB_421_Soil_Metadata.tsv
-  
+
 qiime feature-table tabulate-seqs \
   --i-data rep-seqs.qza \
   --o-visualization rep-seqs.qzv
+
+# Copy file to GitHub repository to view
+scp root@10.19.139.169:/data/project_2/table.qzv .
+
+scp root@10.19.139.169:/data/project_2/req-seqs.qzv .
+
+
+
+### Re-train the classifier ###
+# Extract your amplicon of interest from the reference database
+#replace the ref-otus.qza with the representative sequence file on the server (e.g. /mnt/datasets/silva_ref_files/silva-138-99-seqs.qza)
+#replace primer sequences with your correct sequences
+#replace trunc-len with the one you defined in your denoising step
+qiime feature-classifier extract-reads \
+  --i-sequences ref-otus.qza \
+  --p-f-primer GTGCCAGCMGCCGCGGTAA \
+  --p-r-primer GGACTACHVGGGTWTCTAAT \
+  --p-trunc-len 150 \
+  --o-reads ref-seqs-trimmed.qza
+
+
+ # Train classifier with your new ref-seq file
+# Replace ref-taxonomy.qza with the representative taxonomy file on the server (e.g. /mnt/datasets/silva_ref_files/silva-138-99-tax.qza)
+qiime feature-classifier fit-classifier-naive-bayes \
+  --i-reference-reads ref-seqs-trimmed.qza \
+  --i-reference-taxonomy ref-taxonomy.qza \
+  --o-classifier classifier.qza
+
+# Use the trained classifier to assign taxonomy to your reads (rep-seqs.qza)
+qiime feature-classifier classify-sklearn \
+  --i-classifier classifier.qza \
+  --i-reads rep-seqs.qza \
+  --o-classification taxonomy.qza
+
+
+### Filtering ###
+
+# Remove mitochondria or chloroplast sequences
+qiime taxa filter-table \
+  --i-table table.qza \
+  --i-taxonomy taxonomy.qza \
+  --p-exclude mitochondria,chloroplast \
+  --o-filtered-table table-no-mitochondria-no-chloroplast.qza
+
+
+  
