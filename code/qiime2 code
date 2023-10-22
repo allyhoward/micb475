@@ -3,6 +3,9 @@
 mkdir /data/project_2
 cd /data/project_2
 
+
+### Demultiplex using QIIME2 ###
+
 # Import data while working directory is `/data/project_2` and demultiplex data
 qiime tools import \
   --type "SampleData[SequencesWithQuality]" \
