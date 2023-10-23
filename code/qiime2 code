@@ -56,28 +56,28 @@ qiime feature-table tabulate-seqs \
 # Copy file to GitHub repository to view
 scp root@10.19.139.169:/data/project_2/table.qzv .
 
-scp root@10.19.139.169:/data/project_2/req-seqs.qzv .
+scp root@10.19.139.169:/data/project_2/rep-seqs.qzv .
 
 
 
 ### Re-train the classifier ###
 # Extract your amplicon of interest from the reference database
-#replace the ref-otus.qza with the representative sequence file on the server (e.g. /mnt/datasets/silva_ref_files/silva-138-99-seqs.qza)
+# training with representative sequence file on the server (e.g. /mnt/datasets/silva_ref_files/silva-138-99-seqs.qza)
 #replace primer sequences with your correct sequences
-#replace trunc-len with the one you defined in your denoising step
+#replaced trunc-len with the one defined in your denoising step (410)
+
 qiime feature-classifier extract-reads \
-  --i-sequences ref-otus.qza \
+  --i-sequences /mnt/datasets/silva_ref_files/silva-138-99-seqs.qza \
   --p-f-primer GTGCCAGCMGCCGCGGTAA \
   --p-r-primer GGACTACHVGGGTWTCTAAT \
-  --p-trunc-len 150 \
+  --p-trunc-len 410 \
   --o-reads ref-seqs-trimmed.qza
 
 
  # Train classifier with your new ref-seq file
-# Replace ref-taxonomy.qza with the representative taxonomy file on the server (e.g. /mnt/datasets/silva_ref_files/silva-138-99-tax.qza)
 qiime feature-classifier fit-classifier-naive-bayes \
   --i-reference-reads ref-seqs-trimmed.qza \
-  --i-reference-taxonomy ref-taxonomy.qza \
+  --i-reference-taxonomy /mnt/datasets/silva_ref_files/silva-138-99-tax.qza \
   --o-classifier classifier.qza
 
 # Use the trained classifier to assign taxonomy to your reads (rep-seqs.qza)
