@@ -66,8 +66,6 @@ scp root@10.19.139.169:/data/project_2/rep-seqs.qzv .
 #replace primer sequences with your correct sequences
 #replaced trunc-len with the one defined in your denoising step (410)
 
-
-
 qiime feature-classifier extract-reads \
   --i-sequences silva-seqs.qza \
   --p-f-primer AGAGTTTGATCMTGGCTCAG \ 
@@ -75,26 +73,28 @@ qiime feature-classifier extract-reads \
   --p-trunc-len 410 \
   --o-reads ref-seqs.qza
 
-
-
-qiime feature-classifier extract-reads \ 
---i-sequences /mnt/datasets/classifiers/silva-138-99-nb-classifier.qza \ 
---p-f-primer AGAGTTTGATCMTGGCTCAG \ 
---p-r-primer GWATTACCGCGGCKGCTG \ 
---p-trunc-len 410 \ 
---o-reads ref-seqs-trimmed.qza
-
  # Train classifier with your new ref-seq file
 qiime feature-classifier fit-classifier-naive-bayes \
-  --i-reference-reads ref-seqs-trimmed.qza \
-  --i-reference-taxonomy /mnt/datasets/silva_ref_files/silva-138-99-tax.qza \
+  --i-reference-reads ref-seqs.qza \
+  --i-reference-taxonomy silva-138-99-tax.qza \
   --o-classifier classifier.qza
 
 # Use the trained classifier to assign taxonomy to your reads (rep-seqs.qza)
 qiime feature-classifier classify-sklearn \
   --i-classifier classifier.qza \
-  --i-reads rep-seqs.qza \
-  --o-classification taxonomy.qza
+  --i-reads /data/project_2/rep-seqs.qza \
+  --o-classification /data/project_2/taxonomy.qza
+
+qiime metadata tabulate \
+  --m-input-file taxonomy.qza \
+  --o-visualization taxonomy.qzv
+
+# Taxonomy barplots
+qiime taxa barplot \
+  --i-table table.qza \
+  --i-taxonomy taxonomy.qza \
+  --m-metadata-file /mnt/datasets/project_2/soil/MICB_421_Soil_Metadata.tsv \
+  --o-visualization taxa-bar-plots.qzv
 
 
 ### Filtering ###
