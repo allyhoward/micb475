@@ -66,6 +66,17 @@ scp root@10.19.139.169:/data/project_2/rep-seqs.qzv .
 #replace primer sequences with your correct sequences
 #replaced trunc-len with the one defined in your denoising step (410)
 
+
+
+qiime feature-classifier extract-reads \
+  --i-sequences silva-seqs.qza \
+  --p-f-primer AGAGTTTGATCMTGGCTCAG \ 
+  --p-r-primer GWATTACCGCGGCKGCTG \ 
+  --p-trunc-len 410 \
+  --o-reads ref-seqs.qza
+
+
+
 qiime feature-classifier extract-reads \ 
 --i-sequences /mnt/datasets/classifiers/silva-138-99-nb-classifier.qza \ 
 --p-f-primer AGAGTTTGATCMTGGCTCAG \ 
