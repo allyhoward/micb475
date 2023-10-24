@@ -97,6 +97,11 @@ qiime taxa barplot \
   --o-visualization taxa-bar-plots.qzv
 
 
+# Copy file to GitHub repository to view
+scp root@10.19.139.169:/data/project_2/taxa-bar-plots.qzv .
+
+
+
 ### Filtering ###
 
 # Remove mitochondria or chloroplast sequences
@@ -111,6 +116,25 @@ qiime feature-table summarize \
   --o-visualization table-no-mitochondria-no-chloroplast.qzv \
   --m-sample-metadata-file /mnt/datasets/project_2/soil/MICB_421_Soil_Metadata.tsv
 
+# Copy file to GitHub repository to view
+scp root@10.19.139.169:/data/project_2/table-no-mitochondria-no-chloroplast.qzv .
+
+
+# Metadata based filtering
+
+qiime feature-table filter-samples \
+  --i-table table-no-mitochondria-no-chloroplast.qza \
+  --m-metadata-file /mnt/datasets/project_2/soil/MICB_421_Soil_Metadata.tsv \
+  --p-where "[Tree Cover] IN ('Douglas fir, Lodgepole pine', 'Douglas fir')" \
+  --o-filtered-table tree-cover-filtered-table.qza
+
+qiime feature-table summarize \
+  --i-table tree-cover-filtered-table.qza \
+  --o-visualization tree-cover-filtered-table.qzv \
+  --m-sample-metadata-file /mnt/datasets/project_2/soil/MICB_421_Soil_Metadata.tsv
+
+# Copy file to GitHub repository to view
+scp root@10.19.139.169:/data/project_2/tree-cover-filtered-table.qzv .
 
 ### Generate a tree for phylogenetic diversity ###
 
@@ -125,8 +149,7 @@ qiime phylogeny align-to-tree-mafft-fasttree \
 # Alpha-rarefaction
 qiime diversity alpha-rarefaction \
   --i-table table.qza \
-  --i-phylogeny rooted-tree.qza \
-  --p-max-depth 8000 \
+  --p-max-depth 19000 \
   --m-metadata-file /mnt/datasets/project_2/soil/MICB_421_Soil_Metadata.tsv \
   --o-visualization alpha-rarefaction.qzv
   
