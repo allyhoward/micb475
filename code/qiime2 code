@@ -120,7 +120,7 @@ qiime feature-table summarize \
 scp root@10.19.139.169:/data/project_2/table-no-mitochondria-no-chloroplast.qzv .
 
 
-# Metadata based filtering
+### Metadata based filtering ###
 
 qiime feature-table filter-samples \
   --i-table table-no-mitochondria-no-chloroplast.qza \
@@ -146,20 +146,15 @@ qiime phylogeny align-to-tree-mafft-fasttree \
   --o-tree unrooted-tree.qza \
   --o-rooted-tree rooted-tree.qza 
 
+
+### Rarefaction Curve ###
+
 # Alpha-rarefaction
 qiime diversity alpha-rarefaction \
   --i-table table.qza \
   --p-max-depth 19000 \
   --m-metadata-file /mnt/datasets/project_2/soil/MICB_421_Soil_Metadata.tsv \
   --o-visualization alpha-rarefaction.qzv
-  
 
-### Rarefaction Curve ###
-
-# Calculate alpha- and beta-diversity metrics
-qiime diversity core-metrics-phylogenetic \
-  --i-phylogeny rooted-tree.qza \
-  --i-table table-no-mitochondria-no-chloroplast.qza \
-  --p-sampling-depth XXXX \
-  --m-metadata-file /mnt/datasets/project_2/soil/MICB_421_Soil_Metadata.tsv \
-  --output-dir core-metrics-results
+# Copy file to GitHub repository to view
+scp root@10.19.139.169:/data/project_2/alpha-rarefaction.qzv .
