@@ -2,7 +2,8 @@
 
 ## Agenda
 
-1. go over the project proposal
+1. Go over the project proposal
+2. What are next steps? How should we structure the next part of this project?
 
 ## Meeting Minutes
 
