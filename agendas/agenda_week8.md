@@ -6,6 +6,10 @@
 2. What are next steps? How should we structure the next part of this project?
 
 ## Meeting Minutes
-
+* discussed next steps
+    * dividing who wants to do what going forward
+    * start doing R
+    * if anyone loves QIIME2, can start looking at PICRUSt
+    * 
 
 ## Action Items
