@@ -2,6 +2,7 @@
 
 ## Agenda
 
+1. go over the project proposal
 
 ## Meeting Minutes
 
