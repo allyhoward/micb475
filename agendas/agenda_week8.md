@@ -37,5 +37,6 @@
     * Vera: PICRUSt
     * Anu: indicator code
 
-
 ## Action Items
+* Get started!!
+* Monday evening meet as a group 
