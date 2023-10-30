@@ -158,3 +158,6 @@ qiime diversity alpha-rarefaction \
 
 # Copy file to GitHub repository to view
 scp root@10.19.139.169:/data/project_2/alpha-rarefaction.qzv .
+
+
+### Diversity Metrics ###
