@@ -1,37 +1,33 @@
-### Aim 2: What species indicators do we see arise in A vs O horizons? ###
+# Jastina Aujla
+# Student No. 16920167
+# Assignment 5
 
-# Install the indicspecies package
-install.packages("indicspecies")
-
-### Step 1:Load in the 'tidyverse', 'dplyr', 'phyloseq', 'ape', 'vegan' and 'indicspecies' package
-
-library(tidyverse)
-library(dplyr)
+### Task 1: Load in the 'phyloseq', 'tidyverse', and 'ape' package
 library(phyloseq)
+library(tidyverse)
 library(ape)
-library(vegan)
-library(indicspecies)
 
 
-### Step 2: Load in the soil metadata, OTU table, taxonomy file, and phylogenetic tree
+### Task 2: Load in the pd mouse metadata,  OTU table, taxonomy file, and phylogenetic tree.
 
-# soil metadata
-metaFP <- "soil_metadata.tsv"
+# pd mouse metadata
+metaFP <- "pd_mouse_metadata.tsv"
 meta <- read.delim(file=metaFP, sep = "\t")
 
 # OTU table
-otuFP <- "mpt_export//filtered_table_export//filtered-feature-table.txt"
+otuFP <- "feature-table.txt"
 otu <- read.delim(file=otuFP, sep ="\t", skip=1)
 
 # taxonomy file
-taxFP <- "mpt_export//taxonomy_export//taxonomy.tsv"
+taxFP <- "taxonomy.tsv"
 tax <- read.delim(file=taxFP, sep = "\t")
 
 # phylogenetic tree
-phyloFP <- "mpt_export//rooted_tree_export//tree.nwk"
+phyloFP <- "tree.nwk"
 phylo <- read.tree(file=phyloFP)
 
-### Step 3: Adjust files to be read into a phyloseq object. Make the phyloseq object.
+
+### Task 3: Adjust files to be read into a phyloseq object. Make the phyloseq object.
 
 ## A: Format OTU table as a matrix with rownames and colnames as OTUs and sampleIDs, respectively
 # Save everything except first column (X.OTU.ID) into a matrix
@@ -43,10 +39,10 @@ OTU <- otu_table(otu_mat, taxa_are_rows = TRUE)
 class(OTU)
 
 ## B: Format sample metadata
-# Save everything except X.SampleID as new data frame
+# Save everything except sample_name as new data frame
 samp_df <- as.data.frame(meta[,-1])
-# Make X.SampleID the rownames
-rownames(samp_df)<- meta$'X.SampleID'
+# Make sample_name the rownames
+rownames(samp_df)<- meta$'sample_name'
 # Make phyloseq sample data with sample_data() function
 SAMP <- sample_data(samp_df)
 class(SAMP)
@@ -76,14 +72,18 @@ sample_data(mpt)
 tax_table(mpt)
 phy_tree(mpt)
 
-### Step 4: Rarefy samples to a depth of XXXX. Use the rarefied table for all further plots.
+
+### Task 4: Rarefy samples to a depth of 1000. Use the rarefied table for all further plots.
+
+# Load in the 'vegan' package
+library(vegan)
 
 # Remove ASVs that have less than 5 counts total
 mpt_filt_nolow <- filter_taxa(mpt, function(x) sum(x)>5, prune = TRUE)
 # Remove samples with less than 100 reads
 mpt_final <- prune_samples(sample_sums(mpt_filt_nolow)>100, mpt_filt_nolow)
 
-# Rarefy samples to a depth of XXXX
+# Rarefy samples to a depth of 1000
 rarecurve(t(as.data.frame(otu_table(mpt_final))), cex=0.1)
 mpt_rare <- rarefy_even_depth(mpt_final, rngseed = 1, sample.size = 1000)
 
@@ -92,3 +92,31 @@ save(mpt_final, file="mpt_final.RData")
 save(mpt_rare, file="mpt_rare.RData")
 
 
+### Task 5: Produce an ordination figure using the PCoA method and the unifrac distance metric. 
+
+## Load in the 'ggplot2' package
+library(ggplot2)
+
+#Calculate distance using unifrac
+uni_dm <- distance(mpt_rare, method="unifrac")
+
+#Create coordinate system
+pcoa_uni <- ordinate(mpt_rare, method="PCoA", distance=uni_dm)
+
+#Plot the ordination
+#Make the cage_id different shapes and colour the points by their days_post_transplant. 
+plot_ordination(mpt_rare, pcoa_uni, color = "days_post_transplant", shape="cage_id")
+
+
+#Change the shape label to "Cage ID"
+#Change the color label to "Days after transplant" and make the gradient go from yellow to blue
+gg_pcoa <- plot_ordination(mpt_rare, pcoa_uni, color = "days_post_transplant", shape="cage_id") +
+  labs(pch="Cage ID", col = "Days After Transplant") +
+  scale_color_gradient(low = "yellow", high = "blue")
+gg_pcoa
+
+
+# Task 6: Write code to save the plot above as a .png file into your RProjects folder
+ggsave("plot_pcoa.png"
+       , gg_pcoa
+       , height=4, width=5)

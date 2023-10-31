@@ -1,0 +1,35 @@
+# Jastina Aujla
+# Student No. 16920167
+# Assignment 6
+
+### OPTION I: CORE MICROBIOME
+
+# Load libraries
+library(tidyverse)
+library(phyloseq)
+library(microbiome)
+library(ggVennDiagram)
+library("sf")
+
+# Load data
+load("mpt_final.RData")
+
+# Convert to relative abundance
+mpt_RA <- transform_sample_counts(mpt_final, fun=function(x) x/sum(x))
+
+# Subset dataset into treatment and control groups
+healthy_stat <- subset_samples(mpt_RA, `donor_status`=="Healthy")
+pd_stat <- subset_samples(mpt_RA, `donor_status`=="PD")
+
+# Set a prevalence threshold and abundance threshold
+# Abundance = 0; I want check whether the ASV is present or not
+# Prevalence = 0.5; I want the ASV present in half of the samples
+healthy_ASVs <- core_members(healthy_stat, detection=0, prevalence = 0.5)
+pd_ASVs <- core_members(pd_stat, detection=0, prevalence = 0.5)
+
+# Make a Venn-diagram
+core_micb_venn <- ggVennDiagram(x=list(Parkinson = pd_ASVs, Healthy = healthy_ASVs))
+ggVennDiagram(x=list(Parkinson = pd_ASVs, Healthy = healthy_ASVs))
+
+# Save the Venn diagram as a png 
+ggsave("venn_donor_status.png", core_micb_venn)
