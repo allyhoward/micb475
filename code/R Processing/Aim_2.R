@@ -24,4 +24,3 @@ tax <- read.delim(file=taxFP, sep = "\t")
 # phylogenetic tree
 phyloFP <- "tree.nwk"
 phylo <- read.tree(file=phyloFP)
-
