@@ -1,0 +1,26 @@
+### Aim 2: What species indicators do we see arise in A vs O horizons?
+
+### Code
+
+## Load in the 'dplyr', 'tidyverse', and 'ape' package
+
+library(dplyr)
+library(indicspecies)
+
+## Load in the soil metadata, OTU table, taxonomy file, and phylogenetic tree
+
+# soil metadata
+metaFP <- "soil_metadata.tsv"
+meta <- read.delim(file=metaFP, sep = "\t")
+
+# OTU table
+otuFP <- "feature-table.txt"
+otu <- read.delim(file=otuFP, sep ="\t", skip=1)
+
+# taxonomy file
+taxFP <- "taxonomy.tsv"
+tax <- read.delim(file=taxFP, sep = "\t")
+
+# phylogenetic tree
+phyloFP <- "tree.nwk"
+phylo <- read.tree(file=phyloFP)
