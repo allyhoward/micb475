@@ -2,7 +2,9 @@
 
 ## Agenda
 * Notebooks: we have 2 right now, one on Docs and the readme (the Docs one is more updated!) Should we keep going with the doc or push to the GitHub?
-* Installing PICRUSt2 difficulties
+* Installing PICRUSt2 difficulties (error: The current user does not have write permissions to the target environment.
+  environment location: /opt/conda/envs/qiime2-2023.7)
+
 * Walk thru comments for clarification:
 1. Dataset Overview
 - Q: What did the distribution of lengths generally look like? 
