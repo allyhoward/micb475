@@ -1,3 +1,4 @@
 # W8-TM: Week 9 Team Meeting: November 1
 
 ## Agenda
+* Notebooks: we have 2 right now, one on Docs and the readme (the Docs one is more updated!) Should we keep going with the doc or push to the GitHub?
