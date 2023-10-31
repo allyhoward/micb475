@@ -1,6 +1,7 @@
-# W8-TM: Week 9 Team Meeting: November 1
+# W9-TM: Week 9 Team Meeting: November 1
 
 ## Agenda
+<<<<<<< HEAD
 * Notebooks: we have 2 right now, one on Docs and the readme (the Docs one is more updated!) Should we keep going with the doc or push to the GitHub?
 * Walk thru comments for clarification:
 1. Dataset Overview
@@ -13,3 +14,7 @@
   - A: Plz help with walk thru :( 
 - Q: Permutation test
   - A: Is using the p value preferred over this permutation test for significance? What should we change in this table?
+=======
+1. Notebooks: we have 2 right now, one on Docs and the readme (the Docs one is more updated!) Should we keep going with the doc or push to the GitHub?
+2. Code for installing PICRUSt2 on QIIME 2
+>>>>>>> 2b13b2888ca5c51f1df3aafbf6c44a8ac30c152b
