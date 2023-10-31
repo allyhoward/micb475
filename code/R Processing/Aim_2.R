@@ -20,7 +20,7 @@ metaFP <- "soil_metadata.tsv"
 meta <- read.delim(file=metaFP, sep = "\t")
 
 # OTU table
-otuFP <- "mpt_export//filtered_table_export//filtered-feature-table.txt"
+otuFP <- "mpt_export//filtered_table_export//filtered_feature-table.txt"
 otu <- read.delim(file=otuFP, sep ="\t", skip=1)
 
 # taxonomy file
@@ -85,10 +85,9 @@ mpt_final <- prune_samples(sample_sums(mpt_filt_nolow)>100, mpt_filt_nolow)
 
 # Rarefy samples to a depth of XXXX
 rarecurve(t(as.data.frame(otu_table(mpt_final))), cex=0.1)
-mpt_rare <- rarefy_even_depth(mpt_final, rngseed = 1, sample.size = 1000)
+mpt_rare <- rarefy_even_depth(mpt_final, rngseed = 1, sample.size = XXXX)
 
 # Save files 
 save(mpt_final, file="mpt_final.RData")
 save(mpt_rare, file="mpt_rare.RData")
-
 
