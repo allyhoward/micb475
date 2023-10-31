@@ -16,6 +16,7 @@
   - A: Plz help with walk thru :( 
 - Q: Permutation test
   - A: Is using the p value preferred over this permutation test for significance? What should we change in this table?
+  
 * Questions about coding with R
 1. Aim 2: What species indicators do we see arise in A vs O horizons?
   - Is the workflow: assignment 5 (create phyloseq object; rarefy samples; ordinaton figure) > assignment 6 (indicator species analysis)
