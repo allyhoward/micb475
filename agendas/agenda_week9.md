@@ -2,6 +2,7 @@
 
 ## Agenda
 * Notebooks: we have 2 right now, one on Docs and the readme (the Docs one is more updated!) Should we keep going with the doc or push to the GitHub?
+* Installing PICRUSt2 difficulties
 * Walk thru comments for clarification:
 1. Dataset Overview
 - Q: What did the distribution of lengths generally look like? 
