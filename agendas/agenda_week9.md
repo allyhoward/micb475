@@ -2,3 +2,14 @@
 
 ## Agenda
 * Notebooks: we have 2 right now, one on Docs and the readme (the Docs one is more updated!) Should we keep going with the doc or push to the GitHub?
+* Walk thru comments for clarification:
+1. Dataset Overview
+- Q: What did the distribution of lengths generally look like? 
+  - A: Does this mean long/short? How should we describe this?
+- Q: This is definitely desirable, but this won’t affect sample filtering. Sample filtering = metadata filtering. 
+  - A: Do we delete this sentence?
+2. Proposed Approach Table
+- Q: This is a little off – your reads will be inputted into PICRUSt2, which will then produce outputs in the form of functional datasets (KEGG as you note, and also MetaCyc pathways and enzyme data (EC), just fyi). The OTU table is the table of taxonomic counts, which isn’t a consideration for PICRUSt2 – PICRUSt2 outputs and OTU tables are basically different ways of annotating the same data. 
+  - A: Plz help with walk thru :( 
+- Q: Permutation test
+  - A: Is using the p value preferred over this permutation test for significance? What should we change in this table?
