@@ -50,6 +50,7 @@
   * Resources for PICRUSt2:
     * look up "PICRUSt2 code example"
     * stack exchange / stack overflow
+  * add cell to export PICRUSt2 to R
 
 qiime picrust2 full-pipeline \
    --i-table ld67-table-dada2.qza \
@@ -61,3 +62,11 @@ qiime picrust2 full-pipeline \
   * repeats indicator test 999 times (calculates p-values each time)
   * in resubmission "we'll use 999 mutations and use a p-value cut off of ____"
   * indicator taxa gives table of p-value and stat value regardless of number of permutations
+
+* Questions coding with R
+  * DON'T need to rarefy for indicator species (that is only for diversity)
+  * everything autoconverted for you to relative abundance (don't need to do anything extra) --> look at example code
+  * use filtered metadata tables
+
+* Files too large (from github desktop)
+  * can ignore full metadata tables (only need filtered ones) 
