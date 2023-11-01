@@ -28,4 +28,16 @@
 * Notebook
   * stick with Docs for notebook
   * include notes for R as well
-  * 
+  * discussions just for important things
+    * don't spend too much time on this, just show that you're thinking through things
+  * more emphasis on methods so projects are recreatable
+  * make an effort to make it readable and backed up by rationale
+  * Docs doesn't record history, but for purposes of this class thats ok
+    * don't delete portions!
+
+* Downloading PICRUSt2
+  * should be able to just download to directory
+  * Avril will check it out
+ 
+* resubmitting proposal
+  *  
