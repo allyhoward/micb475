@@ -76,18 +76,4 @@ sample_data(mpt)
 tax_table(mpt)
 phy_tree(mpt)
 
-### Step 4: Rarefy samples to a depth of XXXX. Use the rarefied table for all further plots.
-
-# Remove ASVs that have less than 5 counts total
-mpt_filt_nolow <- filter_taxa(mpt, function(x) sum(x)>5, prune = TRUE)
-# Remove samples with less than 100 reads
-mpt_final <- prune_samples(sample_sums(mpt_filt_nolow)>100, mpt_filt_nolow)
-
-# Rarefy samples to a depth of XXXX
-rarecurve(t(as.data.frame(otu_table(mpt_final))), cex=0.1)
-mpt_rare <- rarefy_even_depth(mpt_final, rngseed = 1, sample.size = XXXX)
-
-# Save files 
-save(mpt_final, file="mpt_final.RData")
-save(mpt_rare, file="mpt_rare.RData")
 
