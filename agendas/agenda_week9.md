@@ -55,4 +55,9 @@ qiime picrust2 full-pipeline \
    --i-table ld67-table-dada2.qza \
    --i-seq ld67-rep-seqs-dada2.qza \
 
-
+* Permutation test
+  * stat test
+  * permutation tests robustness of p-value
+  * repeats indicator test 999 times (calculates p-values each time)
+  * in resubmission "we'll use 999 mutations and use a p-value cut off of ____"
+  * indicator taxa gives table of p-value and stat value regardless of number of permutations
