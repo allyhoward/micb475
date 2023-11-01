@@ -24,3 +24,8 @@
   - Do we use the filtered metadata table in R or the original table.qza?
 
 ## Meeting Minutes
+
+* Notebook
+  * stick with Docs for notebook
+  * include notes for R as well
+  * 
