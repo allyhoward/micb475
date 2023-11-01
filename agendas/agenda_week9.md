@@ -40,4 +40,19 @@
   * Avril will check it out
  
 * resubmitting proposal
-  *  
+  *  Distribution of lengths (dataset overview)
+    * logic is a bit circular (sounds like "shorter because its shorter")
+    * Do most of the samples have maximum read length? Are they outliers?
+  * We can delete sentence about chloroplast filtering
+  * We get half-mark for flowchart (formatted properly in the PDF!)
+* SUBMIT BOTH WORD AND PDF FILES
+  * PICRUSt2 generated in QIIME2 but analyzed in R
+  * Resources for PICRUSt2:
+    * look up "PICRUSt2 code example"
+    * stack exchange / stack overflow
+
+qiime picrust2 full-pipeline \
+   --i-table ld67-table-dada2.qza \
+   --i-seq ld67-rep-seqs-dada2.qza \
+
+
