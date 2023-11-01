@@ -4,6 +4,7 @@
 * Notebooks: we have 2 right now, one on Docs and the readme (the Docs one is more updated!) Should we keep going with the doc or push to the GitHub?
 * Installing PICRUSt2 difficulties (error: The current user does not have write permissions to the target environment.
   environment location: /opt/conda/envs/qiime2-2023.7)
+  2b13b2888ca5c51f1df3aafbf6c44a8ac30c152b
 
 * Walk thru comments for clarification:
 1. Dataset Overview
@@ -23,6 +24,3 @@
   - Do we use the filtered metadata table in R or the original table.qza?
 
 ## Meeting Minutes
-1. Notebooks: we have 2 right now, one on Docs and the readme (the Docs one is more updated!) Should we keep going with the doc or push to the GitHub?
-2. Code for installing PICRUSt2 on QIIME 2
-2b13b2888ca5c51f1df3aafbf6c44a8ac30c152b
