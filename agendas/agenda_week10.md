@@ -15,9 +15,9 @@
 * to install picrust:
 
 wget https://github.com/picrust/picrust2/archive/v2.5.2.tar.gz <br>
-tar xvzf  v2.5.2.tar.gz  return
-cd picrust2-2.5.2/  return
+tar xvzf  v2.5.2.tar.gz <br>
+cd picrust2-2.5.2/ <br>
 
-conda env create -f picrust2-env.yaml  return
-conda activate picrust2  return
-pip install --editable .  return
+conda env create -f picrust2-env.yaml <br>
+conda activate picrust2 <br>
+pip install --editable . <br>
