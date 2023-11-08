@@ -14,7 +14,7 @@
 ## Meeting Minutes
 * to install picrust:
 
-wget https://github.com/picrust/picrust2/archive/v2.5.2.tar.gz  return
+wget https://github.com/picrust/picrust2/archive/v2.5.2.tar.gz <br>
 tar xvzf  v2.5.2.tar.gz  return
 cd picrust2-2.5.2/  return
 
