@@ -22,7 +22,6 @@ conda env create -f picrust2-env.yaml <br>
 conda activate picrust2 <br>
 pip install --editable . <br>
 
-* code to run picrust
-  picrust2_pipeline.py [-i, -o]
+* code to run picrust: picrust2_pipeline.py [-i, -o]
   
   
