@@ -23,7 +23,10 @@ conda activate picrust2 <br>
 pip install --editable . <br>
 
 * to run picrust: **picrust2_pipeline.py [-i, -o]**
+
 * result from indicator taxa to be used in picrust
+  
+* last team meeting: anticipate half of the time investing on practice presentation (10 mins)
 
 
 ## Action Items
