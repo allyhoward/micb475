@@ -14,10 +14,10 @@
 ## Meeting Minutes
 * to install picrust:
 
-wget https://github.com/picrust/picrust2/archive/v2.5.2.tar.gz
-tar xvzf  v2.5.2.tar.gz
-cd picrust2-2.5.2/
+wget https://github.com/picrust/picrust2/archive/v2.5.2.tar.gz  return
+tar xvzf  v2.5.2.tar.gz  return
+cd picrust2-2.5.2/  return
 
-conda env create -f picrust2-env.yaml
-conda activate picrust2
-pip install --editable .
+conda env create -f picrust2-env.yaml  return
+conda activate picrust2  return
+pip install --editable .  return
