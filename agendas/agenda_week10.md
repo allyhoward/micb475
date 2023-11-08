@@ -25,6 +25,7 @@ pip install --editable . <br>
 * code to run picrust: **picrust2_pipeline.py [-i, -o]**
 * picrust: obtian result from indicator taxa
 
+## Action Items
 * try finishing all the tests by next meeting!!
 
 * same time for next week's meeting (Wednesday 1pm)
