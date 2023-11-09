@@ -77,3 +77,20 @@ sample_data(mpt)
 tax_table(mpt)
 phy_tree(mpt)
 
+## F: Convert phyloseq table to relative abundance 
+# Group based on genus level
+mpt_genus <- tax_glom(mpt, "Genus", NArm = FALSE)
+# Convert OTU counts to relative abundance
+mpt_genus_RA <- transform_sample_counts(mpt_genus, fun=function(x) x/sum(x))
+
+## G: Indicator Taxa Analysis 
+# Flip OTU row and column names & calculate indicator values for all ASV's 999 times as per the permutation hypothesis test
+isa_mpt <- multipatt(t(otu_table(mpt_genus_RA)), cluster = sample_data(mpt_genus_RA)$`Horizon`, control = how(nperm = 999)) 
+summary(isa_mpt)
+taxtable <- tax_table(mpt) %>% as.data.frame() %>% rownames_to_column(var="ASV")
+
+# Summary table of ISA data 
+isa_sum <- isa_mpt$sign %>%
+  rownames_to_column(var="ASV") %>%
+  left_join(taxtable) %>%
+  filter(p.value<0.05) 
