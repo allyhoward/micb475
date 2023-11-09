@@ -1,4 +1,3 @@
-setwd('C:\\Users\\anuch\\OneDrive\\Documents\\Github\\micb475\\code\\R Processing')
 ### Aim 2: What species indicators do we see arise in A vs O horizons? ###
 
 # Install the indicspecies package
@@ -77,5 +76,4 @@ otu_table(mpt)
 sample_data(mpt)
 tax_table(mpt)
 phy_tree(mpt)
-
 
