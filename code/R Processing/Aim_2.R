@@ -83,11 +83,11 @@ mpt_genus <- tax_glom(mpt, "Genus", NArm = FALSE)
 # Convert OTU counts to relative abundance
 mpt_genus_RA <- transform_sample_counts(mpt_genus, fun=function(x) x/sum(x))
 
-##G: Set a prevalence threshold and abundance threshold
+## G: Set a prevalence threshold and abundance threshold
 # Abundance = 0.01; I want check whether the ASV is present or not
 # Prevalence = 0.1; I want the ASV present in 10% of the samples
 
-## G: Indicator Taxa Analysis 
+## H: Indicator Taxa Analysis 
 # Flip OTU row and column names & calculate indicator values for all ASV's 999 times as per the permutation hypothesis test
 isa_mpt <- multipatt(t(otu_table(mpt_genus_RA)), cluster = sample_data(mpt_genus_RA)$`Horizon`, control = how(nperm = 999)) 
 summary(isa_mpt)
@@ -99,6 +99,6 @@ isa_sum <- isa_mpt$sign %>%
   left_join(taxtable) %>%
   filter(p.value==0.001) 
 
-## H: ISA Visualization 
+## I: ISA Visualization 
 # Create scatter plot with dot size to visualize ISA ?
 
