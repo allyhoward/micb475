@@ -93,7 +93,7 @@ taxtable <- tax_table(mpt) %>% as.data.frame() %>% rownames_to_column(var="ASV")
 isa_sum <- isa_mpt$sign %>%
   rownames_to_column(var="ASV") %>%
   left_join(taxtable) %>%
-  filter(p.value<0.05) 
+  filter(p.value==0.001) 
 
 ## H: ISA Visualization 
 # Create scatter plot with dot size to visualize ISA ?
