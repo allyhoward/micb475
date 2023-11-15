@@ -24,6 +24,7 @@
     * phyloseq_filter_prevalence(physeq, prev.trh = 0.1, abund.trh = 0.01, threshold_condition = “AND”, abund.type = "total")
     * check if abundance is in percentage or add to 1
     * https://rdrr.io/github/vmikk/metagMisc/man/phyloseq_filter_prevalence.html
-  * stick with one visualization
-  * color indicating what group of species is in the indicator for; determine association b/w condition and species
+  * stick with one visualization - use **ggplot**
+    * color indicating what group of species is in the indicator for; determine association b/w condition and species
+* AIM 1
   * 
