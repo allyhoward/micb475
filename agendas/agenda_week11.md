@@ -26,13 +26,14 @@
     * https://rdrr.io/github/vmikk/metagMisc/man/phyloseq_filter_prevalence.html
   * stick with one visualization - use **ggplot**
     * color indicating what group of species is in the indicator for; determine association b/w condition and species
+  * from Avril: average>1e-4; function(x) mean(x) > 1e-4
 * AIM 1
   * alpha plot looks okay
     * wilcox test: remove quotes; sample ID should be replaced with alpha diversity
   * beta plot needs to fix
     * send Avril R code
-* **Reminders!!!**
-  * 2 MEETINGS LEFT: 1.5 full meeting, 0.5 presentation prep
+* REMINDERS
+  * 2 meetings left: 1.5 full meeting, 0.5 presentation prep
   * finish presentation by last week's meeting (11/29)
   * after that, start drafting the manuscript and practice the presentation
     * send manuscript to Avril early for good feedback
