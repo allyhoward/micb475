@@ -8,3 +8,13 @@
   - what are on the x and y axis?
   - we want to make a bubble plot where the size of the dot represents relative abundance
       - can't access link you sent Anu
+
+## Meeting minute
+* AIM 3: picrust2
+  * use filtered metadata
+  * heat map, all are significant results; may have to state that "everything is very different"
+    * suggestion: check the core microbiome and see which specific species present prevalently
+  * PCA looks great
+  * alternative methods: enrichment analysis to see which pathway is overarching, run indicator species to see which group is more distinctive over another (make a phyloseq object, create a "fake" taxanomy table with one column with all pathway names)
+* AIM 2: ISA
+  * focus on the 3*** ones
