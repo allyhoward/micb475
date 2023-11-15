@@ -15,6 +15,9 @@
   * heat map, all are significant results; may have to state that "everything is very different"
     * suggestion: check the core microbiome and see which specific species present prevalently
   * PCA looks great
-  * alternative methods: enrichment analysis to see which pathway is overarching, run indicator species to see which group is more distinctive over another (make a phyloseq object, create a "fake" taxanomy table with one column with all pathway names)
+  * alternative methods: enrichment analysis to see which pathway is overarching, run indicator species to see which group is more distinctive over another (make a phyloseq object, create a "fake" taxonomy table with one column with all pathway names)
+
 * AIM 2: ISA
   * focus on the 3*** ones
+  * in microbiome pkg - "**microbiome::transform('compositional')**" - transforming phyloseq objects - then do "**clr**" & "**psmelt()**"
+  * 
