@@ -19,7 +19,7 @@
   * alternative methods: enrichment analysis to see which pathway is overarching, run indicator species to see which group is more distinctive over another (make a phyloseq object, create a "fake" taxonomy table with one column with all pathway names)
 * AIM 2
   * focus on the 3*** ones
-  * in microbiome pkg - "**microbiome::transform('compositional')**" - transforming phyloseq objects - then do "**clr**" & "**psmelt()**"
+  * in microbiome pkg - "**microbiome::transform('compositional')**" - transformed phyloseq objects - then do "**clr**" & "**psmelt()**"
   * create a minimum threshold to remove barely present species
     * phyloseq_filter_prevalence(physeq, prev.trh = 0.1, abund.trh = 0.01, threshold_condition = “AND”, abund.type = "total")
     * check if abundance is in percentage or add to 1
