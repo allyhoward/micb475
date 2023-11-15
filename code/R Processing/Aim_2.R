@@ -98,6 +98,3 @@ isa_sum <- isa_mpt$sign %>%
 ## H: ISA Visualization 
 # Create heatmap type plot to visualize ISA using plot_indsp package
 
-# install.packages("plot_indsp")
-# library(plot_indsp)
-# isa_data <- indsp_calc(omicsData = isa_sum, within=NULL, pval_thresh=0.05)
