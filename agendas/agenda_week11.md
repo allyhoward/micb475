@@ -26,7 +26,7 @@
     * https://rdrr.io/github/vmikk/metagMisc/man/phyloseq_filter_prevalence.html
   * stick with one visualization - use **ggplot**
     * color indicating what group of species is in the indicator for; determine association b/w condition and species
-  * from Avril: average>1e-4; function(x) mean(x) > 1e-4
+  * from Avril: average>1e-4; function(x) mean(x) > 1e-4; https://github.com/armetcal/Metcalfe-Roach_PD_2023/blob/main/R%20Scripts/999.%20Differential%20Abundance%20Functions.R
 * AIM 1
   * alpha plot looks okay
     * wilcox test: remove quotes; sample ID should be replaced with alpha diversity
@@ -39,5 +39,5 @@
     * send manuscript to Avril early for good feedback
 
 ## Action item
-* complie all results in one google slides (story board for manuscript - what you want to see and talk about)
+* complie all results in one google slides (story board for manuscript - what you want to show and talk about)
     
