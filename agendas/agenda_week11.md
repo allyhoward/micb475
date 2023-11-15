@@ -20,4 +20,6 @@
 * AIM 2: ISA
   * focus on the 3*** ones
   * in microbiome pkg - "**microbiome::transform('compositional')**" - transforming phyloseq objects - then do "**clr**" & "**psmelt()**"
-  * create a minimum prevalence of 0.01 to filter out low-prevalence species
+  * create a minimum threshold to remove barely-present species
+    * phyloseq_filter_prevalence(physeq, prev.trh = 0.1, abund.trh = 0.01, threshold_condition = “AND”, abund.type = "total")
+    * check if abundance is in percentage or add to 1
