@@ -10,7 +10,7 @@
   - we want to make a bubble plot where the size of the dot represents relative abundance
       - can't access link you sent Anu
 
-## Meeting minute
+## Meeting minutes
 * AIM 3
   * use filtered metadata
   * heat map, all are significant results; may have to state that "everything is very different"
