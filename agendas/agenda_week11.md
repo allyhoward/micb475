@@ -31,7 +31,7 @@
     * wilcox test: remove quotes; sample ID should be replaced with alpha diversity
   * beta plot needs to fix
     * send Avril R code
-* Reminders
+* **Reminders!!!**
   * 2 MEETINGS LEFT: 1.5 full meeting, 0.5 presentation prep
   * finish presentation by last week's meeting (11/29)
   * after that, start drafting the manuscript and practice the presentation
