@@ -96,5 +96,5 @@ isa_sum <- isa_mpt$sign %>%
   filter(p.value<0.05) 
 
 ## H: ISA Visualization 
-# Create heatmap type plot to visualize ISA using plot_indsp package
+# Create scatter plot with dot size to visualize ISA ?
 
