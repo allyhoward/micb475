@@ -35,8 +35,8 @@
 * REMINDERS
   * 2 meetings left: 1.5 full meeting, 0.5 presentation prep
   * finish presentation by last week's meeting (11/29)
-  * after that, start drafting the manuscript and practice the presentation
-    * send manuscript to Avril early for good feedback
+  * after that, start drafting manuscript and practice presentation
+    * send manuscript to Avril **early** for good feedback
 
 ## Action item
 * complie all results in one google slides (story board for manuscript - what you want to show and talk about)
