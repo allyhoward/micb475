@@ -77,16 +77,24 @@ tax_table(mpt)
 phy_tree(mpt)
 
 ## F: Covert reads to relative abundance data
-mpt_relative <- microbiome::transform(mpt, "compositional")
 
+mpt_relative <- microbiome::transform(mpt, "compositional")
+class(mpt_relative)
+
+###section G is a work in progress, bare with me 
 ## G: Set a prevalence threshold and abundance threshold
-# Abundance = 0.01; I want check whether the ASV is present or not
+# Abundance = 0.001; I want check whether the ASV is present or not
 # Prevalence = 0.1; I want the ASV present in 10% of the samples
-abundance_threshold <- 0.01 
+abundance_threshold <- 0.001 
 # 0.01 / sum(mpt_relative) ???
 prevalence_threshold <- 0.1 
 # 0.1 * length(mpt_relative) ???
-mpt_filtered <- filter("compositional", mpt_relative, abundance_threshold=abundance_threshold, prevalence_threshold=prevalence_threshold)
+
+# List of taxa that pass the abundance threshold 
+abundant_taxa_names = prune_taxa((taxa_sums(mpt_relative)/nsamples(mpt_relative))>abundance_threshold, mpt_relative) %>% taxa_names
+
+
+mpt_filtered <- filter(mpt_relative, abundance_threshold=0.001, prevalence_threshold=0.1)
 
 ## H: Convert phyloseq table to relative abundance 
 # Group based on genus level
