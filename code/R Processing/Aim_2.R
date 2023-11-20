@@ -92,9 +92,15 @@ prevalence_threshold <- 0.1
 
 # List of taxa that pass the abundance threshold 
 abundant_taxa_names = prune_taxa((taxa_sums(mpt_relative)/nsamples(mpt_relative))>abundance_threshold, mpt_relative) %>% taxa_names
+# List of taxa that pass the prevalence threshold 
+prevalent_taxa_rows = apply(mpt_relative@otu_table@.Data, 1, function(x) (sum(x != 0, na.rm = TRUE)/length(x[!is.na(x)]))>prevalence_threshold)
+# Select phyloseq rows where value==TRUE
+prevalent_taxa_names = rownames(mpt_relative@tax_table@.Data)[prevalent_taxa_rows]
+#filter phyloseq object
+mpt_relative_filt = mpt_relative %>% 
+  filter(OTU %in% abundant_taxa_names & OTU %in% prevalent_taxa_names)
 
-
-mpt_filtered <- filter(mpt_relative, abundance_threshold=0.001, prevalence_threshold=0.1)
+# mpt_filtered <- filter(mpt_relative, abundance_threshold=0.001, prevalence_threshold=0.1)
 
 ## H: Convert phyloseq table to relative abundance 
 # Group based on genus level
