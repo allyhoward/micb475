@@ -17,7 +17,6 @@ library(microbiome)
 
 # soil metadata
 metaFP <- "soil_metadata.tsv"
-getwd()
 meta <- read.delim(file=metaFP, sep = "\t")
 
 # OTU table
@@ -77,13 +76,19 @@ sample_data(mpt)
 tax_table(mpt)
 phy_tree(mpt)
 
-## F: Set a prevalence threshold and abundance threshold
+## F: Covert reads to relative abundance data
+mpt_relative <- microbiome::transform(mpt, "compositional")
+
+## G: Set a prevalence threshold and abundance threshold
 # Abundance = 0.01; I want check whether the ASV is present or not
 # Prevalence = 0.1; I want the ASV present in 10% of the samples
+abundance_threshold <- 0.01 
+# 0.01 / sum(mpt_relative) ???
+prevalence_threshold <- 0.1 
+# 0.1 * length(mpt_relative) ???
+mpt_filtered <- filter("compositional", mpt_relative, abundance_threshold=abundance_threshold, prevalence_threshold=prevalence_threshold)
 
-
-
-## G: Convert phyloseq table to relative abundance 
+## H: Convert phyloseq table to relative abundance 
 # Group based on genus level
 mpt_genus <- tax_glom(mpt, "Genus", NArm = FALSE)
 # Convert OTU counts to relative abundance
