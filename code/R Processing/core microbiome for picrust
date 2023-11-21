@@ -1,0 +1,78 @@
+# Load packages
+library(phyloseq)
+library(microbiome)
+library(tidyverse)
+library(dplyr)
+library(ape)
+library(vegan)
+
+## adapted from ISA ##
+# Load in the soil metadata, OTU table, taxonomy file, and phylogenetic tree
+
+# soil metadata
+metaFP <- "soil_metadata.tsv"
+meta <- read.delim(file=metaFP, sep = "\t")
+
+# OTU table
+otuFP <- "feature-table.txt"
+otu <- read.delim(file=otuFP, sep ="\t", skip=1)
+
+# taxonomy file
+taxFP <- "taxonomy.tsv"
+tax <- read.delim(file=taxFP, sep = "\t")
+
+# phylogenetic tree
+phyloFP <- "tree.nwk"
+phylo <- read.tree(file=phyloFP)
+
+
+# Adjust files to be read into a phyloseq object. Make the phyloseq object.
+
+## A: Format OTU table as a matrix with rownames and colnames as OTUs and sampleIDs, respectively
+# Save everything except first column (X.OTU.ID) into a matrix
+otu_mat <- as.matrix(otu[,-1])
+# Make first column (X.OTU.ID) the rownames of the new matrix
+rownames(otu_mat) <- otu$`X.OTU.ID`
+# Use the "otu_table" function to make an OTU table
+OTU <- otu_table(otu_mat, taxa_are_rows = TRUE) 
+class(OTU)
+
+## B: Format sample metadata
+# Save everything except X.SampleID as new data frame
+samp_df <- as.data.frame(meta[,-1])
+# Make X.SampleID the rownames
+rownames(samp_df)<- meta$'X.SampleID'
+# Make phyloseq sample data with sample_data() function
+SAMP <- sample_data(samp_df)
+class(SAMP)
+
+## C: Formatting taxonomy
+# Convert taxon strings to a table with separate taxa rank columns
+tax_mat <- tax %>% select(-Confidence)%>%
+  separate(col=Taxon, sep="; "
+           , into = c("Domain","Phylum","Class","Order","Family","Genus","Species")) %>%
+  as.matrix() # Saving as a matrix
+# Save everything except feature IDs 
+tax_mat <- tax_mat[,-1]
+# Make sampleids the rownames
+rownames(tax_mat) <- tax$`Feature.ID`
+# Make taxa table
+TAX <- tax_table(tax_mat)
+class(TAX)
+
+## D: Create phyloseq object with adjusted files. (The phylogenetic tree doesn't need to be adjusted.)
+# Merge all into a phyloseq object
+mpt <- phyloseq(OTU, SAMP, TAX, phylo)
+class(mpt)
+
+
+# Convert phyloseq object to relative abundance.
+phyloseq_object <- transform_sample_counts(mpt, fun=function(x) x/sum(x))
+
+# Create phyloseq objects that contain only samples that belong to each "group" for which we want to know the core microbiome. "group1" and "group2" are both variables within the column "Group" in the sample data table.
+AH_phyloseq <- subset_samples(phyloseq_object, Horizon=="A horizon")
+OH_phyloseq <- subset_samples(phyloseq_object, Horizon=="O horizon")
+
+# Use the core_members to identify core members in each group, setting our choice of detection (abundance) and prevalence thresholds. In this mock code, I'm using a detection threshold of zero (presence/absence) and a prevalence threshold of 0.8 (80% of samples should contain each ASV).
+AH_core <- core_members(AH_phyloseq, detection=1e-4, prevalence=0.1)
+OH_core <- core_members(OH_phyloseq, detection=1e-4, prevalence=0.1)
