@@ -81,14 +81,11 @@ phy_tree(mpt)
 mpt_relative <- microbiome::transform(mpt, "compositional")
 class(mpt_relative)
 
-###section G is a work in progress, bare with me 
 ## G: Set a prevalence threshold and abundance threshold
 # Abundance = 0.001; I want check whether the ASV is present or not
-# Prevalence = 0.1; I want the ASV present in 10% of the samples
 abundance_threshold <- 0.001 
-# 0.01 / sum(mpt_relative) ???
+# Prevalence = 0.1; I want the ASV present in 10% of the samples
 prevalence_threshold <- 0.1 
-# 0.1 * length(mpt_relative) ???
 
 # List of taxa that pass the abundance threshold 
 abundant_taxa_names = prune_taxa((taxa_sums(mpt_relative)/nsamples(mpt_relative))>abundance_threshold, mpt_relative) %>% taxa_names
@@ -97,14 +94,12 @@ prevalent_taxa_rows = apply(mpt_relative@otu_table@.Data, 1, function(x) (sum(x 
 # Select phyloseq rows where value==TRUE
 prevalent_taxa_names = rownames(mpt_relative@tax_table@.Data)[prevalent_taxa_rows]
 #filter phyloseq object
-mpt_relative_filt = mpt_relative %>% 
-  filter(OTU %in% abundant_taxa_names & OTU %in% prevalent_taxa_names)
+mpt_relative_filt = prune_taxa(intersect(abundant_taxa_names,prevalent_taxa_names),mpt_relative)
 
-# mpt_filtered <- filter(mpt_relative, abundance_threshold=0.001, prevalence_threshold=0.1)
 
 ## H: Convert phyloseq table to relative abundance 
 # Group based on genus level
-mpt_genus <- tax_glom(mpt, "Genus", NArm = FALSE)
+mpt_genus <- tax_glom(mpt_relative_filt, "Genus", NArm = FALSE)
 # Convert OTU counts to relative abundance
 mpt_genus_RA <- transform_sample_counts(mpt_genus, fun=function(x) x/sum(x))
 
