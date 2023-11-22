@@ -10,3 +10,24 @@
   * could it be due to NA and 0?
   * should we remove the x/sum(x) code? 
 * Core microbiome and heat map
+
+## Meeting Minutes
+* overview of project for Evelyn
+
+* Alpha diversity:
+  * not significant
+  * only seems to be including one horizon??
+  * send code to Avril!!
+  * If medians fall within box of the other, not significant
+  * good to show Shannon ones that diversity doesn't differ between then
+* Beta diversity:
+  * Weighted unifrac is better
+  * can get rid of unweighted unifrac
+  * less clustering, richness and phylogenetic distance are more likely to be driving diversity
+  * difference in evenness is a bit less
+  * can present BOTH weighted and unweighted
+  * only 1.4% variance
+  * draw ellipses in
+  * MAKE 3 PANNELS: alpha, weighted, unweighted
+ 
+* 
