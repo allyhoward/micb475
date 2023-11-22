@@ -42,7 +42,7 @@
   * use view() to look at data
   * prevalence is too stringent
   * tax_glom before running filtering
-  * SET stat > 0.07 threshold and build a table (abundance 0.001, prevalence 0.1)
+  * SET stat > 0.8 threshold and build a table (abundance 0.001, prevalence 0.1)
 
 * MetaCyc error bar plot
   * log2fold change cut off to filter (0.58) 1.5 fold change in log2
