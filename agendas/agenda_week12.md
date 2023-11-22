@@ -55,6 +55,11 @@
   * use tax_glom to genus level
   * set_1 is AH_core
   * after doing genus level, can put in paper
- 
+
+* Bubble plot:
+  * do in ggplot
+  * email Avril if we need help
+   
 * Next week:
-  * practice presentation!!! 
+  * practice presentation!!!
+  * outline for manuscript
