@@ -3,4 +3,4 @@
 ## Agenda
 
 * Alpha and Beta Diversity Plots - technically complete but alpha significance tests are slightly concerning...
-  **trying it with different metrics?
+  *  trying it with different metrics? But then the t test code doesn't run???
