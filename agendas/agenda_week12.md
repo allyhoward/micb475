@@ -5,3 +5,6 @@
 * Alpha and Beta Diversity Plots - technically complete but alpha significance tests are slightly concerning...
   *  trying it with different metrics? But then the t-test code doesn't run???
   *  put all the stuff into slides - would appreciate everyone's opinion!
+* Downstream erros and issues after ISA filtering
+  * could it be due to NA and 0?
+  * should we remove the x/sum(x) code? 
