@@ -48,8 +48,8 @@
   * log2fold change cut off to filter (0.58) 1.5 fold change in log2
   * crop out p-value
 *  MetaCyc PCA plot
-  * can use to show that everything is significant
-  * don't need heat map
+   * can use to show that everything is significant
+   * don't need heat map
 * Core microbiome
   * use tax_glom to genus level
   * set_1 is AH_core
