@@ -6,7 +6,7 @@ library(dplyr)
 library(ape)
 library(vegan)
 
-## adapted from ISA ##
+
 # Load in the soil metadata, OTU table, taxonomy file, and phylogenetic tree
 
 # soil metadata
@@ -14,7 +14,7 @@ metaFP <- "soil_metadata.tsv"
 meta <- read.delim(file=metaFP, sep = "\t")
 
 # OTU table
-otuFP <- "feature-table.txt"
+otuFP <- "filtered-feature-table.txt"
 otu <- read.delim(file=otuFP, sep ="\t", skip=1)
 
 # taxonomy file
@@ -65,9 +65,13 @@ class(TAX)
 mpt <- phyloseq(OTU, SAMP, TAX, phylo)
 class(mpt)
 
+# Change phyloseq object to Genus level
+mpt_glom <- tax_glom(mpt, taxrank = 'Genus', NArm = FALSE)
+class(mpt_glom)
+
 
 # Convert phyloseq object to relative abundance.
-phyloseq_object <- transform_sample_counts(mpt, fun=function(x) x/sum(x))
+phyloseq_object <- transform_sample_counts(mpt_glom, fun=function(x) x/sum(x))
 
 # Create phyloseq objects that contain only samples that belong to each "group" for which we want to know the core microbiome. "group1" and "group2" are both variables within the column "Group" in the sample data table.
 AH_phyloseq <- subset_samples(phyloseq_object, Horizon=="A horizon")
@@ -76,3 +80,11 @@ OH_phyloseq <- subset_samples(phyloseq_object, Horizon=="O horizon")
 # Use the core_members to identify core members in each group, setting our choice of detection (abundance) and prevalence thresholds. In this mock code, I'm using a detection threshold of zero (presence/absence) and a prevalence threshold of 0.8 (80% of samples should contain each ASV).
 AH_core <- core_members(AH_phyloseq, detection=1e-4, prevalence=0.1)
 OH_core <- core_members(OH_phyloseq, detection=1e-4, prevalence=0.1)
+
+# Venn Diagram
+library(ggVennDiagram)
+library(ggplot2)
+Venn <- ggVennDiagram(x=list(AH_core, OH_core), category.names = c("A Horizon","O Horizon")) + 
+  scale_fill_gradient(low = "#F4FAFE", high = "#4981BF") +
+  scale_color_manual(values = c("A Horizon" = "black","O Horizon" ="black"))
+ggsave("coremicrobiome_genus.png", Venn)
