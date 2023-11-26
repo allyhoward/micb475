@@ -85,7 +85,7 @@ mpt_genus <- tax_glom(mpt, "Genus", NArm = FALSE)
 mpt_relative <- microbiome::transform(mpt_genus, "compositional")
 class(mpt_relative)
 
-## h: Set a prevalence threshold and abundance threshold
+## H: Set a prevalence threshold and abundance threshold
 # Abundance = 0.0001; I want check whether the ASV is present or not
 abundance_threshold <- 0.001
 # Prevalence = 0.1; I want the ASV present in 10% of the samples
@@ -103,9 +103,9 @@ mpt_relative_filt = prune_taxa(intersect(abundant_taxa_names,prevalent_taxa_name
 ### Step 4: Perform Indicator Taxa Analysis
 
 # Flip OTU row and column names & calculate indicator values for all ASV's 999 times as per the permutation hypothesis test
-isa_mpt <- multipatt(t(otu_table(mpt_genus)), cluster = sample_data(mpt_genus_RA)$`Horizon`, control = how(nperm = 999)) 
+isa_mpt <- multipatt(t(otu_table(mpt_genus)), cluster = sample_data(mpt_relative_filt)$`Horizon`, control = how(nperm = 999)) 
 summary(isa_mpt)
-taxtable <- tax_table(mpt) %>% as.data.frame() %>% rownames_to_column(var="ASV")
+taxtable <- tax_table(mpt_relative ) %>% as.data.frame() %>% rownames_to_column(var="ASV")
 
 # Summary table of ISA data 
 isa_sum <- isa_mpt$sign %>%
@@ -116,5 +116,12 @@ isa_sum <- isa_mpt$sign %>%
 ### Step 5: Visualize Data
 
 ## : ISA Visualization 
-# Create scatter plot with dot size to visualize ISA ?
+# Create scatter plot with dot size to visualize ISA Sum
 
+# Assign plot to a variable
+indic_plot <- ggplot(data = isa_sum, aes(x = interaction(`s.A horizon`, `s.O horizon`), y = Genus)) +
+              geom_point(aes(size = stat)) +
+              scale_x_discrete(breaks=c("1.0", "0.1"),
+                   labels=c("A Horizon", "O Horizon")) +
+              labs(x = "Horizon", y = "Genus") +
+              guides(size = guide_legend(title = "Mean % Ab.")) 
