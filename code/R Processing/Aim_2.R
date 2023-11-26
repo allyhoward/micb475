@@ -3,7 +3,7 @@
 # Install the indicspecies package
 install.packages("indicspecies")
 
-### Step 1:Load in the 'tidyverse', 'dplyr', 'phyloseq', 'ape', 'vegan' and 'indicspecies' package
+### Step 1:Load in the 'tidyverse', 'dplyr', 'phyloseq', 'ape', 'vegan', 'indicspecies' and 'microbiome' package
 
 library(tidyverse)
 library(dplyr)
@@ -117,11 +117,12 @@ isa_sum <- isa_mpt$sign %>%
 
 ## : ISA Visualization 
 # Create scatter plot with dot size to visualize ISA Sum
-
-# Assign plot to a variable
 indic_plot <- ggplot(data = isa_sum, aes(x = interaction(`s.A horizon`, `s.O horizon`), y = Genus)) +
               geom_point(aes(size = stat)) +
               scale_x_discrete(breaks=c("1.0", "0.1"),
                    labels=c("A Horizon", "O Horizon")) +
               labs(x = "Horizon", y = "Genus") +
               guides(size = guide_legend(title = "Mean % Ab.")) 
+
+# Save the plot as an image. 
+ggsave("Indicator Species Analysis Plot.png", indic_plot)
