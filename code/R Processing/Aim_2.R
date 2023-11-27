@@ -76,12 +76,10 @@ sample_data(mpt)
 tax_table(mpt)
 phy_tree(mpt)
 
-## F: Convert phyloseq table to relative abundance 
-# Group based on genus level
+## F: Group phyloseq object based on genus level
 mpt_genus <- tax_glom(mpt, "Genus", NArm = FALSE)
 
 ## G: Covert reads to relative abundance data
-
 mpt_relative <- microbiome::transform(mpt_genus, "compositional")
 class(mpt_relative)
 
@@ -100,12 +98,12 @@ prevalent_taxa_names = rownames(mpt_relative@tax_table@.Data)[prevalent_taxa_row
 #filter phyloseq object
 mpt_relative_filt = prune_taxa(intersect(abundant_taxa_names,prevalent_taxa_names),mpt_relative)
 
-### Step 4: Perform Indicator Taxa Analysis
+### Step 4: Perform Indicator Species Analysis
 
 # Flip OTU row and column names & calculate indicator values for all ASV's 999 times as per the permutation hypothesis test
 isa_mpt <- multipatt(t(otu_table(mpt_genus)), cluster = sample_data(mpt_relative_filt)$`Horizon`, control = how(nperm = 999)) 
 summary(isa_mpt)
-taxtable <- tax_table(mpt_relative ) %>% as.data.frame() %>% rownames_to_column(var="ASV")
+taxtable <- tax_table(mpt_relative) %>% as.data.frame() %>% rownames_to_column(var="ASV")
 
 # Summary table of ISA data 
 isa_sum <- isa_mpt$sign %>%
