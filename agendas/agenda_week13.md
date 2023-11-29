@@ -7,3 +7,4 @@
   * what is the relative abundance relative to (lol)
   * looks like O horizon is on average more downregulated and A horizon upregulated?
   * should we look at individual pathways in more detail?
+* manuscript style - UJEMI?
