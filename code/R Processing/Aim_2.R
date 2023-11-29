@@ -1,7 +1,7 @@
 ### Aim 2: What species indicators do we see arise in A vs O horizons? ###
 
 # Install the indicspecies package
-install.packages("indicspecies")
+# install.packages("indicspecies")
 
 ### Step 1:Load in the 'tidyverse', 'dplyr', 'phyloseq', 'ape', 'vegan', 'indicspecies' and 'microbiome' package
 
@@ -116,11 +116,22 @@ isa_sum <- isa_mpt$sign %>%
 ## : ISA Visualization 
 # Create scatter plot with dot size to visualize ISA Sum
 indic_plot <- ggplot(data = isa_sum, aes(x = interaction(`s.A horizon`, `s.O horizon`), y = Genus)) +
-              geom_point(aes(size = stat)) +
+              geom_point(aes(size = stat, color = interaction(`s.A horizon`, `s.O horizon`))) +
               scale_x_discrete(breaks=c("1.0", "0.1"),
                    labels=c("A Horizon", "O Horizon")) +
-              labs(x = "Horizon", y = "Genus") +
-              guides(size = guide_legend(title = "Mean % Ab.")) 
+              labs(y = "Genus") +
+              xlab(NULL) +
+              guides(size = guide_legend(title = "Mean % Ab.")) +
+              guides(color = guide_legend(title = "Indicator")) 
+  
+  # Save the plot as an image. 
+  ggsave("Indicator Species Analysis Plot.png", indic_plot)
+  
+              scale_x_discrete(limits=c("1.0", "0.1")) +
+              scale_fill_discrete(name = "Indicator", labels = c("A Horizon", "O Horizon"))
+              plot(x, y, col = rep(1:2, each = 10), pch = 19) +
+              legend("bottomright", legend = paste("Group", 1:3), col = 1:3, pch = 19, bty = "n")
+              aes(x = fct_inorder("1.0", "0.1")) 
 
 # Save the plot as an image. 
 ggsave("Indicator Species Analysis Plot.png", indic_plot)
