@@ -8,3 +8,5 @@
   * looks like O horizon is on average more downregulated and A horizon upregulated?
   * should we look at individual pathways in more detail?
 * manuscript style - UJEMI?
+* pcoa plots - how to add clustering elipses :(
+* what is the ideal day to get you a draft of the manuscript?
