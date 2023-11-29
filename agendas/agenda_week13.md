@@ -12,5 +12,6 @@
   * ideal day to get you a draft for feedback?
 * PCoA plots - how to add clustering elipses :(
 * Thoughts on future directions? does it really address a "problem" like the rubric says?
+* Practice Presentation
 
 ## Meeting minutes
