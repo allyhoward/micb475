@@ -10,3 +10,4 @@
 * manuscript style - UJEMI?
 * pcoa plots - how to add clustering elipses :(
 * what is the ideal day to get you a draft of the manuscript?
+* thoughts on future directions? does it really address a "problem" like the rubric says?
