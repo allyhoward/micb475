@@ -17,7 +17,6 @@
   * fixing plot
   * discussion of data
 
-
 ## Meeting minutes
 * PCA plot: Don't worry about the percentages, don't even mention it - Avril
 * Error bar plot:
@@ -28,7 +27,11 @@
   * maybe take a glance at the major pathways? but if it doesn't give you anything is 'cool' then don't bother
 * Manuscript:
   * search up UJEMI -> for authors -> submission guidelines
-  * guidelines are summarized in Module 17 
+  * guidelines are summarized in Module 17
+  * try to get in draft manuscript by Tuesday night for guaranteed feedback from Avril 
 * PCoA plots:
+* ISA plot:
+  * ask for help about figure legends after, for now edit axis in PP
 * Future direction:
-* Notes on presentation: 
+  * put it into a wider context: do other authros address which horizon they collect data from? if not, our results show a significant difference so perhaps it would be worthwhile for that to be mentioned 
+* Notes on presentation:
