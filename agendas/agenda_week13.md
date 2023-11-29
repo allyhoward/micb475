@@ -7,7 +7,10 @@
   * what is the relative abundance relative to (lol)
   * looks like O horizon is on average more downregulated and A horizon upregulated?
   * should we look at individual pathways in more detail?
-* manuscript style - UJEMI?
-* pcoa plots - how to add clustering elipses :(
-* what is the ideal day to get you a draft of the manuscript?
-* thoughts on future directions? does it really address a "problem" like the rubric says?
+* Manuscript
+  * UJEMI style?
+  * ideal day to get you a draft for feedback?
+* PCoA plots - how to add clustering elipses :(
+* Thoughts on future directions? does it really address a "problem" like the rubric says?
+
+## Meeting minutes
