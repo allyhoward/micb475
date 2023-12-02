@@ -83,7 +83,17 @@ mpt_genus <- tax_glom(mpt, "Genus", NArm = FALSE)
 mpt_relative <- microbiome::transform(mpt_genus, "compositional")
 class(mpt_relative)
 
-## H: Set a prevalence threshold and abundance threshold
+## H: Calculate mean % abundance
+mpt_relative %>% 
+  microbiome::transform('compositional') %>% 
+  tax_glom('Genus') %>% 
+  psmelt() %>% 
+  group_by(Genus, Horizon) %>% 
+  summarize(Abundance=mean(Abundance)) %>% 
+  filter(Genus %in% isa_results$Genus)
+
+
+## I: Set a prevalence threshold and abundance threshold
 # Abundance = 0.0001; I want check whether the ASV is present or not
 abundance_threshold <- 0.001
 # Prevalence = 0.1; I want the ASV present in 10% of the samples
@@ -113,12 +123,6 @@ isa_sum <- isa_mpt$sign %>%
   arrange(`s.A horizon`, `s.O horizon`) %>%
   mutate(Genus = factor(Genus, levels = .$Genus)) 
 
-# Take mean values per group
-mean_abun = isa_sum %>% group_by(stat, `s.A horizon`, `s.O horizon`, Genus) %>% 
-  summarize(Abundance = mean(stat)) %>% ungroup %>% 
-  dplyr::rename('Mean Ab.' = Abundance) %>% 
-  mutate(Indicator = factor(Indicator,levels = c('1.0', '0.1')))
-
 ### Step 5: Visualize Data
 
 ## : ISA Visualization 
@@ -136,14 +140,5 @@ indic_plot <- ggplot(data = isa_sum, aes(x = interaction(`s.A horizon`, `s.O hor
                                  name = 'Indicator')
                             
   
-  # Save the plot as an image. 
-  ggsave("Indicator Species Analysis Plot.png", indic_plot)
-  
-              scale_x_discrete(limits=c("1.0", "0.1")) +
-              scale_fill_discrete(name = "Indicator", labels = c("A Horizon", "O Horizon"))
-              plot(x, y, col = rep(1:2, each = 10), pch = 19) +
-              legend("bottomright", legend = paste("Group", 1:3), col = 1:3, pch = 19, bty = "n")
-              aes(x = fct_inorder("1.0", "0.1")) 
-
 # Save the plot as an image. 
-ggsave("Indicator Species Analysis Plot.png", indic_plot)
+  ggsave("Indicator Species Analysis Plot.png", indic_plot)
