@@ -131,7 +131,10 @@ indic_plot <- ggplot(data = isa_sum, aes(x = interaction(`s.A horizon`, `s.O hor
               labs(y = "Genus") +
               xlab(NULL) +
               guides(size = guide_legend(title = "Mean % Ab.")) +
-              guides(color = guide_legend(title = "Indicator")) 
+              scale_color_manual(labels = c('A Horizon', 'O Horizon'), 
+                                 values = factor(c('1.0', '0.1', "#999999", "#E69F00")), 
+                                 name = 'Indicator')
+                            
   
   # Save the plot as an image. 
   ggsave("Indicator Species Analysis Plot.png", indic_plot)
