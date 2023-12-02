@@ -109,12 +109,21 @@ taxtable <- tax_table(mpt_relative) %>% as.data.frame() %>% rownames_to_column(v
 isa_sum <- isa_mpt$sign %>%
   rownames_to_column(var="ASV") %>%
   left_join(taxtable) %>%
-  filter(p.value==0.001, stat>0.8) 
+  filter(p.value==0.001, stat>0.8) %>%
+  arrange(`s.A horizon`, `s.O horizon`) %>%
+  mutate(Genus = factor(Genus, levels = .$Genus)) 
+
+# Take mean values per group
+mean_abun = isa_sum %>% group_by(stat, `s.A horizon`, `s.O horizon`, Genus) %>% 
+  summarize(Abundance = mean(stat)) %>% ungroup %>% 
+  dplyr::rename('Mean Ab.' = Abundance) %>% 
+  mutate(Indicator = factor(Indicator,levels = c('1.0', '0.1')))
 
 ### Step 5: Visualize Data
 
 ## : ISA Visualization 
 # Create scatter plot with dot size to visualize ISA Sum
+
 indic_plot <- ggplot(data = isa_sum, aes(x = interaction(`s.A horizon`, `s.O horizon`), y = Genus)) +
               geom_point(aes(size = stat, color = interaction(`s.A horizon`, `s.O horizon`))) +
               scale_x_discrete(breaks=c("1.0", "0.1"),
