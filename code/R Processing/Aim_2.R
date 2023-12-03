@@ -84,14 +84,13 @@ mpt_relative <- microbiome::transform(mpt_genus, "compositional")
 class(mpt_relative)
 
 ## H: Calculate mean % abundance
-mpt_relative %>% 
+mean_abund <- mpt_relative %>% 
   microbiome::transform('compositional') %>% 
   tax_glom('Genus') %>% 
   psmelt() %>% 
-  group_by(Genus, `s.A horizon`, `s.O horizon`) %>% 
+  group_by(Genus, Horizon) %>% 
   summarize(Abundance=mean(Abundance)) %>% 
   filter(Genus %in% isa_sum$Genus)
-
 
 ## I: Set a prevalence threshold and abundance threshold
 # Abundance = 0.0001; I want check whether the ASV is present or not
