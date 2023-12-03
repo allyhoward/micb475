@@ -88,9 +88,9 @@ mpt_relative %>%
   microbiome::transform('compositional') %>% 
   tax_glom('Genus') %>% 
   psmelt() %>% 
-  group_by(Genus, Horizon) %>% 
+  group_by(Genus, `s.A horizon`, `s.O horizon`) %>% 
   summarize(Abundance=mean(Abundance)) %>% 
-  filter(Genus %in% isa_results$Genus)
+  filter(Genus %in% isa_sum$Genus)
 
 
 ## I: Set a prevalence threshold and abundance threshold
