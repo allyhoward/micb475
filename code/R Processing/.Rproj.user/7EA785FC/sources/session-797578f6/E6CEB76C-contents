@@ -83,16 +83,7 @@ mpt_genus <- tax_glom(mpt, "Genus", NArm = FALSE)
 mpt_relative <- microbiome::transform(mpt_genus, "compositional")
 class(mpt_relative)
 
-## H: Calculate mean % abundance
-mean_abund <- mpt_relative %>% 
-  microbiome::transform('compositional') %>% 
-  tax_glom('Genus') %>% 
-  psmelt() %>% 
-  group_by(Genus, Horizon) %>% 
-  summarize(Abundance=mean(Abundance)) %>% 
-  filter(Genus %in% isa_sum$Genus)
-
-## I: Set a prevalence threshold and abundance threshold
+## H: Set a prevalence threshold and abundance threshold
 # Abundance = 0.0001; I want check whether the ASV is present or not
 abundance_threshold <- 0.001
 # Prevalence = 0.1; I want the ASV present in 10% of the samples
@@ -118,24 +109,33 @@ taxtable <- tax_table(mpt_relative) %>% as.data.frame() %>% rownames_to_column(v
 isa_sum <- isa_mpt$sign %>%
   rownames_to_column(var="ASV") %>%
   left_join(taxtable) %>%
-  filter(p.value==0.001, stat>0.8) %>%
-  arrange(`s.A horizon`, `s.O horizon`) %>%
-  mutate(Genus = factor(Genus, levels = .$Genus)) 
+  filter(p.value==0.001, stat>0.8) 
+
+# Calculate mean % abundance
+mean_abund <- mpt_relative %>% 
+  microbiome::transform('compositional') %>% 
+  tax_glom('Genus') %>% 
+  psmelt() %>% 
+  group_by(Genus, Horizon) %>% 
+  summarize(Abundance=mean(Abundance)) %>% 
+  filter(Genus %in% isa_sum$Genus) %>%
+arrange(Horizon) %>%
+  mutate(Genus = factor(Genus, levels = .$Genus))
 
 ### Step 5: Visualize Data
 
 ## : ISA Visualization 
 # Create scatter plot with dot size to visualize ISA Sum
 
-indic_plot <- ggplot(data = isa_sum, aes(x = interaction(`s.A horizon`, `s.O horizon`), y = Genus)) +
-              geom_point(aes(size = stat, color = interaction(`s.A horizon`, `s.O horizon`))) +
-              scale_x_discrete(breaks=c("1.0", "0.1"),
+indic_plot <- ggplot(data = mean_abund, aes(x = Horizon, y = Genus)) +
+              geom_point(aes(size = Abundance, color = Horizon)) +
+              scale_x_discrete(breaks=c("A horizon", "O horizon"),
                    labels=c("A Horizon", "O Horizon")) +
               labs(y = "Genus") +
               xlab(NULL) +
               guides(size = guide_legend(title = "Mean % Ab.")) +
               scale_color_manual(labels = c('A Horizon', 'O Horizon'), 
-                                 values = factor(c('1.0', '0.1', "#999999", "#E69F00")), 
+                                 values = factor(c('A horizon', 'O horizon', "#999999", "#E69F00")), 
                                  name = 'Indicator')
                             
   
