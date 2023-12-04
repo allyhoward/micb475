@@ -119,8 +119,10 @@ mean_abund <- mpt_relative %>%
   group_by(Genus, Horizon) %>% 
   summarize(Abundance=mean(Abundance)) %>% 
   filter(Genus %in% isa_sum$Genus) %>%
-arrange(Horizon) %>%
-  mutate(Genus = factor(Genus, levels = .$Genus))
+  ungroup() %>%
+  arrange(Horizon) %>%
+  mutate(Genus = factor(Genus, levels = .$Genus %>% unique()))
+
 
 ### Step 5: Visualize Data
 
@@ -133,9 +135,14 @@ indic_plot <- ggplot(data = mean_abund, aes(x = Horizon, y = Genus)) +
                    labels=c("A Horizon", "O Horizon")) +
               labs(y = "Genus") +
               xlab(NULL) +
-              guides(size = guide_legend(title = "Mean % Ab.")) +
+              guides(size = guide_legend(title = "Relative Ab.")) +
+              
+  
+  
+  
+  
               scale_color_manual(labels = c('A Horizon', 'O Horizon'), 
-                                 values = factor(c('A horizon', 'O horizon', "#999999", "#E69F00")), 
+                                 values = factor(c('A horizon', 'O horizon')), 
                                  name = 'Indicator')
                             
   
