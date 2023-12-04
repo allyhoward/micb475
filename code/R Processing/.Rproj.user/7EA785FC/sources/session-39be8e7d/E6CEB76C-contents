@@ -119,32 +119,35 @@ mean_abund <- mpt_relative %>%
   group_by(Genus, Horizon) %>% 
   summarize(Abundance=mean(Abundance)) %>% 
   filter(Genus %in% isa_sum$Genus) %>%
-  ungroup() %>%
-  arrange(Horizon) %>%
-  mutate(Genus = factor(Genus, levels = .$Genus %>% unique()))
+  ungroup(Genus, Horizon) %>%
 
+# Merging data frames
+merged_data <-  merge(mean_abund, isa_sum)
+
+# Subsetting the merged data frame
+isa_RA <- subset(merged_data, select = -c(4,7:16))
+
+# Create new column that denotes indicator type
+isa_RA$Indicator <- ifelse(isa_RA$"s.A horizon" == 1, "s.A horizon", 
+                           ifelse(isa_RA$"s.O horizon" == 1, "s.O horizon", NA))
+
+# Arrange the data
+isa_RA <- arrange(isa_RA, Indicator) %>%
+          mutate(Genus = factor(Genus, levels = .$Genus %>% unique()))
 
 ### Step 5: Visualize Data
 
 ## : ISA Visualization 
 # Create scatter plot with dot size to visualize ISA Sum
 
-indic_plot <- ggplot(data = mean_abund, aes(x = Horizon, y = Genus)) +
-              geom_point(aes(size = Abundance, color = Horizon)) +
+indic_plot <- ggplot(data = isa_RA, aes(x = Horizon, y = Genus)) +
+              geom_point(aes(size = Abundance, colour = Indicator)) +
               scale_x_discrete(breaks=c("A horizon", "O horizon"),
                    labels=c("A Horizon", "O Horizon")) +
               labs(y = "Genus") +
               xlab(NULL) +
               guides(size = guide_legend(title = "Relative Ab.")) +
-              
-  
-  
-  
-  
-              scale_color_manual(labels = c('A Horizon', 'O Horizon'), 
-                                 values = factor(c('A horizon', 'O horizon')), 
-                                 name = 'Indicator')
-                            
-  
+              scale_color_manual(values = c("#FFC20A","#0C7BDC"),
+                                 labels = c('A Horizon', 'O Horizon'))
 # Save the plot as an image. 
   ggsave("Indicator Species Analysis Plot.png", indic_plot)
