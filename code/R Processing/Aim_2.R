@@ -131,6 +131,9 @@ isa_RA <- subset(merged_data, select = -c(4,7:16))
 isa_RA$Indicator <- ifelse(isa_RA$"s.A horizon" == 1, "s.A horizon", 
                            ifelse(isa_RA$"s.O horizon" == 1, "s.O horizon", NA))
 
+# Create new column that is the mean % abundance
+isa_RA$`Mean Abundance` <- isa_RA$Abundance * 100
+
 # Arrange the data
 isa_RA <- arrange(isa_RA, Indicator) %>%
           mutate(Genus = factor(Genus, levels = .$Genus %>% unique()))
@@ -141,12 +144,12 @@ isa_RA <- arrange(isa_RA, Indicator) %>%
 # Create scatter plot with dot size to visualize ISA Sum
 
 indic_plot <- ggplot(data = isa_RA, aes(x = Horizon, y = Genus)) +
-              geom_point(aes(size = Abundance, colour = Indicator)) +
+              geom_point(aes(size = `Mean Abundance`, colour = Indicator)) +
               scale_x_discrete(breaks=c("A horizon", "O horizon"),
                    labels=c("A Horizon", "O Horizon")) +
               labs(y = "Genus") +
               xlab(NULL) +
-              guides(size = guide_legend(title = "Relative Ab.")) +
+              guides(size = guide_legend(title = "Mean % Ab.")) +
               scale_color_manual(values = c("#FFC20A","#0C7BDC"),
                                  labels = c('A Horizon', 'O Horizon'))
 # Save the plot as an image. 
