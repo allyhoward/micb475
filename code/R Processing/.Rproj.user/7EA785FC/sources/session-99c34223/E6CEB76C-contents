@@ -1,7 +1,7 @@
 ### Aim 2: What species indicators do we see arise in A vs O horizons? ###
 
 # Install the indicspecies package
-# install.packages("indicspecies")
+install.packages("indicspecies")
 
 ### Step 1:Load in the 'tidyverse', 'dplyr', 'phyloseq', 'ape', 'vegan', 'indicspecies' and 'microbiome' package
 
@@ -119,7 +119,7 @@ mean_abund <- mpt_relative %>%
   group_by(Genus, Horizon) %>% 
   summarize(Abundance=mean(Abundance)) %>% 
   filter(Genus %in% isa_sum$Genus) %>%
-  ungroup(Genus, Horizon) %>%
+  ungroup(Genus, Horizon)
 
 # Merging data frames
 merged_data <-  merge(mean_abund, isa_sum)
