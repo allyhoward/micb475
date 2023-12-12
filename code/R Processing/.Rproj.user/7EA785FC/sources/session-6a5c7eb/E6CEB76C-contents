@@ -11,7 +11,6 @@ library(phyloseq)
 library(ape)
 library(vegan)
 library(indicspecies)
-library(microbiome)
 
 ### Step 2: Load in the soil metadata, OTU table, taxonomy file, and phylogenetic tree
 
