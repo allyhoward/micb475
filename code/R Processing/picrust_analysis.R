@@ -1,3 +1,6 @@
+#### This is the script used to visualize PICRUSt2 data for this project ####
+# finalized Nov 24 2023 by Ally Howard
+
 # Load libraries
 library(ggpicrust2)
 library(readr)
