@@ -83,7 +83,7 @@ mpt_relative <- microbiome::transform(mpt_genus, "compositional")
 class(mpt_relative)
 
 ## H: Set a prevalence threshold and abundance threshold
-# Abundance = 0.0001; I want check whether the ASV is present or not
+# Abundance = 0.001; I want check whether the ASV is present or not
 abundance_threshold <- 0.001
 # Prevalence = 0.1; I want the ASV present in 10% of the samples
 prevalence_threshold <- 0.1 
@@ -149,7 +149,7 @@ indic_plot <- ggplot(data = isa_RA, aes(x = Horizon, y = Genus)) +
               labs(y = "Genus") +
               xlab(NULL) +
               guides(size = guide_legend(title = "Mean % Ab.")) +
-              scale_color_manual(values = c("#FFC20A","#0C7BDC"),
+              scale_color_manual(values = c("#FF0000","#0C7BDC"),
                                  labels = c('A Horizon', 'O Horizon'))
 # Save the plot as an image. 
   ggsave("Indicator Species Analysis Plot.png", indic_plot)
