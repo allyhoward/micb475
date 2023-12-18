@@ -1,0 +1,56 @@
+# Ilan Rubin
+# November 10, 2020
+# MICB 447 Alpha Diversity functions
+
+library(ggplot2)
+
+### Alpha diversity functions
+# Shannon's diversity
+shannons = function(x){
+  present = x[x>0]
+  p = present/sum(present)
+  -sum(p*log(p))
+}
+
+# Pielou's evennenss function
+evenness = function(x){
+  present = x[x>0]
+  p = present/sum(present)
+  -sum(p*log(p))/log(sum(x>0))
+}
+
+# richness function
+richness = function(x){
+  return(sum(x>0))
+}
+
+### Load data
+biom = import_biom("table-with-taxonomy.biom")
+taxa_table = otu_table(biom)
+taxonomy = tax_table(biom)
+metadata = read.table("sample-metadata.tsv",sep="\t",header=T,row.names = 1)
+
+### Calculate alpha diversity
+metadata$richness = apply(taxa_table,2,richness)
+metadata$shannons = apply(taxa_table,2,shannons)
+metadata$evenness = apply(taxa_table,2,evenness)
+
+### Discrete variable
+ggplot(metadata,aes(x=body.site,y=shannons)) +
+  geom_boxplot(outlier.shape=NA) +
+  geom_point(position=position_jitter(width=0.1))
+# ANOVA
+body_site_shannons_lm = lm(shannons ~ body.site, data = metadata)
+summary(aov(body_site_shannons_lm))
+# Post-hoc pairwise Tukey Kramer
+TukeyHSD(aov(body_site_shannons_lm))
+
+### Continuous variable
+ggplot(metadata,aes(x=days.since.experiment.start,y=shannons)) +
+  geom_point() +
+  geom_smooth(method="lm",formula=y~x)
+# Correlation
+cor.test(metadata$days.since.experiment.start,metadata$shannons)
+# Regression
+days_shannons_lm = lm(shannons ~ days.since.experiment.start, data = metadata)
+summary(days_shannons_lm)

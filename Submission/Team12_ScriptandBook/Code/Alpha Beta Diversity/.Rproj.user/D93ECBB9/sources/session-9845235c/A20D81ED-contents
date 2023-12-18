@@ -1,0 +1,11 @@
+
+### Alpha diversity metrics - shannon's diversity index plots
+
+library(ggplot2)
+
+shannons = function(x){
+  present = x[x>0]
+  p = present/sum(present)
+  -sum(p*log(p))
+}
+
